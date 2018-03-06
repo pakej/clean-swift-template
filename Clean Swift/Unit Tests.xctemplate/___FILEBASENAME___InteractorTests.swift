@@ -13,57 +13,76 @@
 @testable import ___PROJECTNAMEASIDENTIFIER___
 import XCTest
 
-class ___VARIABLE_sceneName___InteractorTests: XCTestCase
-{
-  // MARK: Subject under test
+class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
+  
+  // MARK: - Subject Under Test (SUT)
   
   var sut: ___VARIABLE_sceneName___Interactor!
   
-  // MARK: Test lifecycle
+  // MARK: - Test Lifecycle
   
-  override func setUp()
-  {
+  override func setUp() {
     super.setUp()
     setup___VARIABLE_sceneName___Interactor()
   }
   
-  override func tearDown()
-  {
+  override func tearDown() {
     super.tearDown()
   }
   
-  // MARK: Test setup
+  // MARK: - Test Setup
   
-  func setup___VARIABLE_sceneName___Interactor()
-  {
+  func setup___VARIABLE_sceneName___Interactor() {
     sut = ___VARIABLE_sceneName___Interactor()
   }
   
-  // MARK: Test doubles
+  // MARK: - Test Doubles
   
-  class ___VARIABLE_sceneName___PresentationLogicSpy: ___VARIABLE_sceneName___PresentationLogic
-  {
-    var presentSomethingCalled = false
+  class ___VARIABLE_sceneName___PresentationLogicSpy: ___VARIABLE_sceneName___PresentationLogic {
     
-    func presentSomething(response: ___VARIABLE_sceneName___.Something.Response)
-    {
-      presentSomethingCalled = true
+    // Expectations
+
+    var presentFetchFromDataStoreCalled = false
+    var present___VARIABLE_sceneName___ResultCalled = false
+
+    // Spied Methods
+
+    func presentFetchFromDataStoreResult(response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
+      presentFetchFromDataStoreCalled = true
+    }
+    
+    func present___VARIABLE_sceneName___Result(response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
+      present___VARIABLE_sceneName___ResultCalled = true
     }
   }
   
-  // MARK: Tests
-  
-  func testDoSomething()
-  {
+  // MARK: - Tests
+
+  func testFetchFromDataStore() {
+
     // Given
-    let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
+    let request   = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+    let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
     sut.presenter = spy
-    let request = ___VARIABLE_sceneName___.Something.Request()
     
     // When
-    sut.doSomething(request: request)
+    sut.fetchFromDataStore(request: request)
     
     // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
+    XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(request:) should ask the presenter to format the result")
+  }
+  
+  func test___VARIABLE_sceneName___() {
+
+    // Given
+    let request   = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request()
+    let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
+    sut.presenter = spy
+    
+    // When
+    sut.___VARIABLE_sceneName___(request: request)
+    
+    // Then
+    XCTAssertTrue(spy.present___VARIABLE_sceneName___ResultCalled, "___VARIABLE_sceneName___(request:) should ask the presenter to format the result")
   }
 }

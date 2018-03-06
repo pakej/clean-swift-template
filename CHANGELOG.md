@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file
 
+## 4.0.1
+
+- Modified the Unit Test template to accommodate common project usage
+
 ## 4.0.0
 
 - Modified the original Clean Swift template to accommodate common project usage

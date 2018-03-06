@@ -13,38 +13,35 @@
 @testable import ___PROJECTNAMEASIDENTIFIER___
 import XCTest
 
-class ___VARIABLE_sceneName___WorkerTests: XCTestCase
-{
-  // MARK: Subject under test
+class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
+
+  // MARK: Subject Under Test (SUT)
   
   var sut: ___VARIABLE_sceneName___Worker!
   
-  // MARK: Test lifecycle
+  // MARK: Test Lifecycle
   
-  override func setUp()
-  {
+  override func setUp() {
     super.setUp()
     setup___VARIABLE_sceneName___Worker()
   }
   
-  override func tearDown()
-  {
+  override func tearDown() {
     super.tearDown()
   }
   
-  // MARK: Test setup
+  // MARK: Test Setup
   
-  func setup___VARIABLE_sceneName___Worker()
-  {
+  func setup___VARIABLE_sceneName___Worker() {
     sut = ___VARIABLE_sceneName___Worker()
   }
   
-  // MARK: Test doubles
+  // MARK: Test Doubles
   
   // MARK: Tests
   
-  func testSomething()
-  {
+  func test___VARIABLE_sceneName___() {
+    
     // Given
     
     // When
