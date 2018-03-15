@@ -47,11 +47,11 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
     // Spied Methods
 
-    func presentFetchFromDataStoreResult(response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
+    func presentFetchFromDataStoreResult(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
       presentFetchFromDataStoreCalled = true
     }
     
-    func present___VARIABLE_sceneName___Result(response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
+    func present___VARIABLE_sceneName___Result(with response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
       present___VARIABLE_sceneName___ResultCalled = true
     }
   }
@@ -66,7 +66,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
     sut.presenter = spy
     
     // When
-    sut.fetchFromDataStore(request: request)
+    sut.fetchFromDataStore(with: request)
     
     // Then
     XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(request:) should ask the presenter to format the result")
@@ -80,7 +80,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
     sut.presenter = spy
     
     // When
-    sut.___VARIABLE_sceneName___(request: request)
+    sut.___VARIABLE_sceneName___(with: request)
     
     // Then
     XCTAssertTrue(spy.present___VARIABLE_sceneName___ResultCalled, "___VARIABLE_sceneName___(request:) should ask the presenter to format the result")

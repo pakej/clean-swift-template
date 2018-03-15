@@ -63,7 +63,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
     // Given
     let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
     sut.viewController = spy
-    let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response()
+    let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response(userAttribute: "")
     
     // When
     sut.presentFetchFromDataStoreResult(with: response)
@@ -77,7 +77,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
     // Given
     let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
     sut.viewController = spy
-    let response = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response()
+    let response = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response(containsErrors: false, genericErrorMessage: nil, variablePassed: nil)
     
     // When
     sut.present___VARIABLE_sceneName___Result(with: response)
