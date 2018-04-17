@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file
 
+## 4.0.2
+
+- Treat Fetch from datastore as a Use Case for better clarity
+
 ## 4.0.1
 
 - Modified the Unit Test template to accommodate common project usage

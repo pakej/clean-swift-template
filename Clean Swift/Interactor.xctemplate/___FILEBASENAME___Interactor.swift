@@ -27,7 +27,7 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
   
   var attribute: String?
 
-  // MARK: Fetch Data From DataStore
+  // MARK: Use Case - Fetch Data From DataStore
   
   func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
     attribute = ""

@@ -13,9 +13,9 @@
 import UIKit
 
 enum ___VARIABLE_sceneName___Models {
+ 
+  // MARK: Use Cases
 
-  // MARK: Data Store Fetch
-  
   enum FetchFromDataStore {
     struct Request {
     }
@@ -27,9 +27,7 @@ enum ___VARIABLE_sceneName___Models {
     struct ViewModel {
       var userAttribute: String
     }
-  }
-  
-  // MARK: Use Cases
+  }  
   
   enum ___VARIABLE_sceneName___ {
     struct Request {

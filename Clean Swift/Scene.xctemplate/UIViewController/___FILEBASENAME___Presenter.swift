@@ -20,7 +20,7 @@ protocol ___VARIABLE_sceneName___PresentationLogic {
 class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
   weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
 
-  // MARK: Fetch Data From DataStore
+  // MARK: Use Case - Fetch Data From DataStore
   
   func presentFetchFromDataStoreResult(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
     let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(userAttribute: response.userAttribute)

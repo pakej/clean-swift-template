@@ -100,7 +100,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     someButton.titleLabel?.font = font
   }
 
-  // MARK: Fetch Data From DataStore
+  // MARK: Use Case - Fetch Data From DataStore
 
   @IBOutlet var userAttributeLabel: UILabel!
   func setupFetchFromDataStore() {
