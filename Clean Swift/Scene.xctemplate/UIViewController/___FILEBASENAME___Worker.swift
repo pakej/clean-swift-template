@@ -13,10 +13,10 @@
 import UIKit
 
 class ___VARIABLE_sceneName___Worker {
-  func ___VARIABLE_sceneName___(completionHandler: @escaping (Bool, String?) -> Void) {
-    let isSuccessful = true
-    let errorMessage: String? = "Some service error message."
+    func ___VARIABLE_sceneName___(completionHandler: @escaping (Bool, String?) -> Void) {
+        let isSuccessful = true
+        let errorMessage: String? = "Some service error message."
 
-    completionHandler(isSuccessful, errorMessage)
-  }
+        completionHandler(isSuccessful, errorMessage)
+    }
 }

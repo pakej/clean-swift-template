@@ -13,43 +13,43 @@
 import UIKit
 
 enum ___VARIABLE_sceneName___Models {
-    
-  // MARK: Use Cases
 
-  enum FetchFromDataStore {
-    struct Request {
-    }
-    
-    struct Response {
-      var userAttribute: String
-    }
-    
-    struct ViewModel {
-      var userAttribute: String
-    }
-  }  
-  
-  enum ___VARIABLE_sceneName___ {
-    struct Request {
-      var variableToPass: String?
+    // MARK: Use Cases
+
+    enum FetchFromDataStore {
+        struct Request {
+        }
+
+        struct Response {
+            var userAttribute: String
+        }
+
+        struct ViewModel {
+            var userAttribute: String
+        }
+    }  
+
+    enum ___VARIABLE_sceneName___ {
+        struct Request {
+            var variableToPass: String?
+        }
+
+        struct Response {
+            var containsErrors: Bool
+            var genericErrorMessage: String?
+            var variablePassed: VariablePassed?
+        }
+
+        struct ViewModel {
+            var containsErrors: Bool
+            var genericErrorMessage: String?
+            var variablePassed: VariablePassed?
+        }
     }
 
-    struct Response {
-      var containsErrors: Bool
-      var genericErrorMessage: String?
-      var variablePassed: VariablePassed?
+    // MARK: View Models
+
+    struct VariablePassed {
+        var errorMessage: String?
     }
-
-    struct ViewModel {
-      var containsErrors: Bool
-      var genericErrorMessage: String?
-      var variablePassed: VariablePassed?
-    }
-  }
-
-  // MARK: View Models
-
-  struct VariablePassed {
-    var errorMessage: String?
-  }
 }

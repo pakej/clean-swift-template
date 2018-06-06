@@ -14,75 +14,75 @@
 import XCTest
 
 class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
-  
-  // MARK: - Subject Under Test (SUT)
-  
-  var sut: ___VARIABLE_sceneName___Interactor!
-  
-  // MARK: - Test Lifecycle
-  
-  override func setUp() {
-    super.setUp()
-    setup___VARIABLE_sceneName___Interactor()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
-  // MARK: - Test Setup
-  
-  func setup___VARIABLE_sceneName___Interactor() {
-    sut = ___VARIABLE_sceneName___Interactor()
-  }
-  
-  // MARK: - Test Doubles
-  
-  class ___VARIABLE_sceneName___PresentationLogicSpy: ___VARIABLE_sceneName___PresentationLogic {
-    
-    // Expectations
 
-    var presentFetchFromDataStoreCalled = false
-    var present___VARIABLE_sceneName___ResultCalled = false
+    // MARK: - Subject Under Test (SUT)
 
-    // Spied Methods
+    var sut: ___VARIABLE_sceneName___Interactor!
 
-    func presentFetchFromDataStoreResult(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-      presentFetchFromDataStoreCalled = true
+    // MARK: - Test Lifecycle
+
+    override func setUp() {
+        super.setUp()
+        setup___VARIABLE_sceneName___Interactor()
     }
-    
-    func present___VARIABLE_sceneName___Result(with response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
-      present___VARIABLE_sceneName___ResultCalled = true
+
+    override func tearDown() {
+        super.tearDown()
     }
-  }
-  
-  // MARK: - Tests
 
-  func testFetchFromDataStore() {
+    // MARK: - Test Setup
 
-    // Given
-    let request   = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
-    let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
-    sut.presenter = spy
-    
-    // When
-    sut.fetchFromDataStore(with: request)
-    
-    // Then
-    XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(request:) should ask the presenter to format the result")
-  }
-  
-  func test___VARIABLE_sceneName___() {
+    func setup___VARIABLE_sceneName___Interactor() {
+        sut = ___VARIABLE_sceneName___Interactor()
+    }
 
-    // Given
-    let request   = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request()
-    let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
-    sut.presenter = spy
-    
-    // When
-    sut.___VARIABLE_sceneName___(with: request)
-    
-    // Then
-    XCTAssertTrue(spy.present___VARIABLE_sceneName___ResultCalled, "___VARIABLE_sceneName___(request:) should ask the presenter to format the result")
-  }
+    // MARK: - Test Doubles
+
+    class ___VARIABLE_sceneName___PresentationLogicSpy: ___VARIABLE_sceneName___PresentationLogic {
+
+        // Expectations
+
+        var presentFetchFromDataStoreCalled = false
+        var present___VARIABLE_sceneName___ResultCalled = false
+
+        // Spied Methods
+
+        func presentFetchFromDataStoreResult(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
+            presentFetchFromDataStoreCalled = true
+        }
+
+        func present___VARIABLE_sceneName___Result(with response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
+            present___VARIABLE_sceneName___ResultCalled = true
+        }
+    }
+
+    // MARK: - Tests
+
+    func testFetchFromDataStore() {
+
+        // Given
+        let request   = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+        let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
+        sut.presenter = spy
+
+        // When
+        sut.fetchFromDataStore(with: request)
+
+        // Then
+        XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(request:) should ask the presenter to format the result")
+    }
+
+    func test___VARIABLE_sceneName___() {
+
+        // Given
+        let request   = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request()
+        let spy       = ___VARIABLE_sceneName___PresentationLogicSpy()
+        sut.presenter = spy
+
+        // When
+        sut.___VARIABLE_sceneName___(with: request)
+
+        // Then
+        XCTAssertTrue(spy.present___VARIABLE_sceneName___ResultCalled, "___VARIABLE_sceneName___(request:) should ask the presenter to format the result")
+    }
 }
