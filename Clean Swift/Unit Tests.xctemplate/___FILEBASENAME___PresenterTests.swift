@@ -43,15 +43,17 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
             displayFetchFromDataStoreCalled = true
         }
 
-        var display___VARIABLE_sceneName___Called = false
-        func display___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel) {
-            display___VARIABLE_sceneName___Called = true
+        var displayPerform___VARIABLE_sceneName___Called = false
+        var perform___VARIABLE_sceneName___ViewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel!
+        func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel) {
+            displayPerform___VARIABLE_sceneName___Called = true
+            perform___VARIABLE_sceneName___ViewModel = viewModel
         }    
     }
 
     // MARK: - Tests
 
-    func testFetchFromDataStore() {
+    func testPresentFetchFromDataStoreShouldAskTheViewControllerToDisplay() {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
@@ -64,16 +66,30 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         XCTAssertTrue(spy.displayFetchFromDataStoreCalled, "presentFetchFromDataStore(with:) should ask the view controller to display the result")
     }
 
-    func test___VARIABLE_sceneName___() {
+    func testPresentPerform___VARIABLE_sceneName___ShouldAskTheViewControllerToDisplay() {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response()
+        let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response()
 
         // when
-        sut.present___VARIABLE_sceneName___(with: response)
+        sut.presentPerform___VARIABLE_sceneName___(with: response)
 
         // then
-        XCTAssertTrue(spy.display___VARIABLE_sceneName___Called, "present___VARIABLE_sceneName___(with:) should ask the view controller to display the result")
-    }  
+        XCTAssertTrue(spy.displayPerform___VARIABLE_sceneName___Called, "presentPerform___VARIABLE_sceneName___(with:) should ask the view controller to display the result")
+    }
+    
+    func testPresentPerform___VARIABLE_sceneName___ShouldReturnErrorMessageIfThereIsAnError() {
+        // given
+        let error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
+        let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
+        sut.viewController = spy
+        let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response(error: error)
+        
+        // when
+        sut.presentPerform___VARIABLE_sceneName___(with: response)
+        
+        // then
+        XCTAssertNotNil(spy.perform___VARIABLE_sceneName___ViewModel.error?.message, "presentPerform___VARIABLE_sceneName___(with:) should return error message if there is an error")
+    }
 }

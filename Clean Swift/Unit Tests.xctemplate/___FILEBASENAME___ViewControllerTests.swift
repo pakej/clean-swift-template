@@ -53,13 +53,20 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
             fetchFromDataStoreCalled = true
         }
 
-        var ___VARIABLE_sceneName___Called = false
-        func ___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request) {
-            ___VARIABLE_sceneName___Called = true
+        var perform___VARIABLE_sceneName___Called = false
+        func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request) {
+            perform___VARIABLE_sceneName___Called = true
         }
     }
 
-    class ___VARIABLE_sceneName___RoutingLogicSpy: ___VARIABLE_sceneName___RoutingLogic {
+    class ___VARIABLE_sceneName___RouterSpy: ___VARIABLE_sceneName___Router {
+        
+        // MARK: Spied Methods
+        
+        var routeToNextCalled = false
+        override func routeToNext() {
+            routeToNextCalled = true
+        }        
     }
 
     // MARK: - Tests
@@ -76,6 +83,59 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         XCTAssertTrue(spy.fetchFromDataStoreCalled, "viewDidLoad() should ask the interactor to fetch from DataStore")
     }
 
-    func testDisplayFetchFromDataStoreResult() {
+    func testShouldDisplayDataFetchedFromDataStore() {
+        // given
+        loadView()
+        
+        // when
+        let exampleVariable = "Example string."
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: exampleVariable)
+        sut.displayFetchFromDataStore(with: viewModel)
+        
+        // then
+        XCTAssertEqual(sut.exampleLabel.text, exampleVariable, "displayDataFetchedFromDataStore(with:) should display the correct example label text")
+    }
+    
+    func testUnsuccessful___VARIABLE_sceneName___ShouldShowErrorAsLabel() {
+        // given
+        loadView()
+        
+        // when
+        var error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
+        error.message = "Example error"
+        let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: error)
+        sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
+        
+        // then
+        XCTAssertEqual(sut.exampleLabel.text, error.message, "displayPerform___VARIABLE_sceneName___(with:) should set error as label if there is an error")
+    }
+    
+    func testUnsuccessful___VARIABLE_sceneName___ShouldNotRouteToNext() {
+        // given
+        let spy = ___VARIABLE_sceneName___RouterSpy()
+        sut.router = spy
+        loadView()
+        
+        // when
+        let error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
+        let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: error)
+        sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
+        
+        // then
+        XCTAssertFalse(spy.routeToNextCalled, "displayPerform___VARIABLE_sceneName___(with:) should not route to next screen if there is an error")
+    }
+    
+    func testSuccessful___VARIABLE_sceneName___ShouldRouteToNext() {
+        // given
+        let spy = ___VARIABLE_sceneName___RouterSpy()
+        sut.router = spy
+        loadView()
+        
+        // when
+        let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: nil)
+        sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
+        
+        // then
+        XCTAssertTrue(spy.routeToNextCalled, "displayPerform___VARIABLE_sceneName___(with:) should route to next screen if there is no error")
     }
 }

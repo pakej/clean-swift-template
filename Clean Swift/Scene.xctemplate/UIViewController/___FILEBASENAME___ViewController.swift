@@ -57,7 +57,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     // MARK: Use Case - Fetch Data From DataStore
 
-    @IBOutlet var exampleLabel: UILabel!
+    @IBOutlet var exampleLabel: UILabel! = UILabel()
     func setupFetchFromDataStore() {
         let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
         interactor?.fetchFromDataStore(with: request)
@@ -65,7 +65,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
         exampleLabel.text = viewModel.exampleVariable
-    }  
+    }
 
     // MARK: Use Case - ___VARIABLE_sceneName___
 
@@ -80,11 +80,12 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         if let error = viewModel.error {
             switch error.type {
                 case .emptyExampleVariable:
-                    print(error.message ?? "")
+                    exampleLabel.text = error.message
 
                 case .apiError:
-                    print(error.message ?? "")
+                    exampleLabel.text = error.message
             }
+            return
         }
 
         // handle ui element success state and

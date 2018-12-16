@@ -43,15 +43,32 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
             presentFetchFromDataStoreCalled = true
         }
 
-        var present___VARIABLE_sceneName___Called = false
-        func present___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response) {
-            present___VARIABLE_sceneName___Called = true
+        var presentPerform___VARIABLE_sceneName___Called = false
+        func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response) {
+            presentPerform___VARIABLE_sceneName___Called = true
+        }
+    }
+    
+    class ___VARIABLE_sceneName___WorkerSpy: ___VARIABLE_sceneName___Worker {
+        
+        // MARK: Spied Methods
+        
+        var validateExampleVariableCalled = false
+        override func validate(exampleVariable: String?) {
+            super.validate(exampleVariable: exampleVariable)
+            validateExampleVariableCalled = true
+        }
+        
+        var perform___VARIABLE_sceneName___Called = false
+        override func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Worker.ErrorType>?) -> Void) {
+            super.perform___VARIABLE_sceneName___(completion: completion)
+            perform___VARIABLE_sceneName___Called = true
         }
     }
 
     // MARK: - Tests
 
-    func testFetchFromDataStore() {
+    func testFetchFromDataStoreShouldAskPresenterToFormat() {
         // given
         let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
         let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
@@ -61,19 +78,58 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         sut.fetchFromDataStore(with: request)
 
         // then
-        XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(request:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(with:) should ask the presenter to format the result")
     }
 
-    func test___VARIABLE_sceneName___() {
+    func testPerform___VARIABLE_sceneName___ShouldValidateExampleVariable() {
         // given
-        let request = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request()
-        let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
-        sut.presenter = spy
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request()
+        let spy = ___VARIABLE_sceneName___WorkerSpy()
+        sut.worker = spy
 
         // when
-        sut.___VARIABLE_sceneName___(with: request)
+        sut.perform___VARIABLE_sceneName___(with: request)
 
         // then
-        XCTAssertTrue(spy.present___VARIABLE_sceneName___Called, "___VARIABLE_sceneName___(request:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.validateExampleVariableCalled, "perform___VARIABLE_sceneName___(with:) should ask the worker to validate the example variable")
+    }
+    
+    func testPerform___VARIABLE_sceneName___ShouldAskPresenterToFormat() {
+        // given
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request()
+        let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
+        sut.presenter = spy
+        
+        // when
+        sut.perform___VARIABLE_sceneName___(with: request)
+        
+        // then
+        XCTAssertTrue(spy.presentPerform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask the presenter to format the result")
+    }
+    
+    func testPerform___VARIABLE_sceneName___ShouldNotAskWorkerToPerform___VARIABLE_sceneName___IfThereIsAnError() {
+        // given
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: nil)
+        let spy = ___VARIABLE_sceneName___WorkerSpy()
+        sut.worker = spy
+        
+        // when
+        sut.perform___VARIABLE_sceneName___(with: request)
+        
+        // then
+        XCTAssertFalse(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should not ask worker to perform ___VARIABLE_sceneName___ if there is an error")
+    }
+    
+    func testPerform___VARIABLE_sceneName___ShouldAskWorkerToPerform___VARIABLE_sceneName___IfThereIsNoError() {
+        // given
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: "Example string.")
+        let spy = ___VARIABLE_sceneName___WorkerSpy()
+        sut.worker = spy
+        
+        // when
+        sut.perform___VARIABLE_sceneName___(with: request)
+        
+        // then
+        XCTAssertTrue(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask worker to perform ___VARIABLE_sceneName___ if there is no error")
     }
 }

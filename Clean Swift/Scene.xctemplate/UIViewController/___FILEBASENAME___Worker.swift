@@ -18,17 +18,17 @@ class ___VARIABLE_sceneName___Worker {
     // MARK: - Use Cases
 
     func validate(exampleVariable: String?) {
-        if exampleVariable?.isEmpty == true {
-            error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .emptyExampleVariable)
+        if exampleVariable?.isEmpty == false {
+            error = nil
         }
         else {
-            error = nil
+            error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .emptyExampleVariable)
         }
     }
 
     func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<ErrorType>?) -> Void) {
         let isSuccessful = true
-        let error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .apiError)
+        let error: ___VARIABLE_sceneName___Models.Error<ErrorType>? = nil
 
         completion(isSuccessful, error)
     }
