@@ -13,57 +13,76 @@
 @testable import ___PROJECTNAMEASIDENTIFIER___
 import XCTest
 
-class ___VARIABLE_sceneName___PresenterTests: XCTestCase
-{
-  // MARK: Subject under test
-  
-  var sut: ___VARIABLE_sceneName___Presenter!
-  
-  // MARK: Test lifecycle
-  
-  override func setUp()
-  {
-    super.setUp()
-    setup___VARIABLE_sceneName___Presenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: Test setup
-  
-  func setup___VARIABLE_sceneName___Presenter()
-  {
-    sut = ___VARIABLE_sceneName___Presenter()
-  }
-  
-  // MARK: Test doubles
-  
-  class ___VARIABLE_sceneName___DisplayLogicSpy: ___VARIABLE_sceneName___DisplayLogic
-  {
-    var displaySomethingCalled = false
-    
-    func displaySomething(viewModel: ___VARIABLE_sceneName___.Something.ViewModel)
-    {
-      displaySomethingCalled = true
+class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
+
+    // MARK: Subject Under Test (SUT)
+
+    var sut: ___VARIABLE_sceneName___Presenter!
+
+    // MARK: Test Lifecycle
+
+    override func setUp() {
+        super.setUp()
+        setup___VARIABLE_sceneName___Presenter()
     }
-  }
-  
-  // MARK: Tests
-  
-  func testPresentSomething()
-  {
-    // Given
-    let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
-    sut.viewController = spy
-    let response = ___VARIABLE_sceneName___.Something.Response()
-    
-    // When
-    sut.presentSomething(response: response)
-    
-    // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-  }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // MARK: Test Setup
+
+    func setup___VARIABLE_sceneName___Presenter() {
+        sut = ___VARIABLE_sceneName___Presenter()
+    }
+
+    // MARK: Test Doubles
+
+    class ___VARIABLE_sceneName___DisplayLogicSpy: ___VARIABLE_sceneName___DisplayLogic {
+
+        // Expectations
+
+        var displayFetchFromDataStoreResultCalled = false
+        var display___VARIABLE_sceneName___ResultCalled = false
+
+        // Spied Methods
+
+        func displayFetchFromDataStoreResult(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
+            displayFetchFromDataStoreResultCalled = true
+        }
+
+        func display___VARIABLE_sceneName___Result(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel) {
+            display___VARIABLE_sceneName___ResultCalled = true
+        }    
+    }
+
+    // MARK: Tests
+
+    func testFetchFromDataStore() {
+
+        // Given
+        let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
+        sut.viewController = spy
+        let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response(userAttribute: "")
+
+        // When
+        sut.presentFetchFromDataStoreResult(with: response)
+
+        // Then
+        XCTAssertTrue(spy.displayFetchFromDataStoreResultCalled, "presentFetchFromDataStoreResult(with:) should ask the view controller to display the result")
+    }
+
+    func test___VARIABLE_sceneName___() {
+
+        // Given
+        let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
+        sut.viewController = spy
+        let response = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Response(containsErrors: false, genericErrorMessage: nil, variablePassed: nil)
+
+        // When
+        sut.present___VARIABLE_sceneName___Result(with: response)
+
+        // Then
+        XCTAssertTrue(spy.display___VARIABLE_sceneName___ResultCalled, "present___VARIABLE_sceneName___Result(with:) should ask the view controller to display the result")
+    }  
 }

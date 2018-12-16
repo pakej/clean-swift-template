@@ -13,39 +13,40 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___RoutingLogic {
-  func routeToSomewhere()
+    func routeToSomewhere()
 }
 
 protocol ___VARIABLE_sceneName___DataPassing {
-  var dataStore: ___VARIABLE_sceneName___DataStore? { get }
+    var dataStore: ___VARIABLE_sceneName___DataStore? { get }
 }
 
 class ___VARIABLE_sceneName___Router: NSObject, ___VARIABLE_sceneName___RoutingLogic, ___VARIABLE_sceneName___DataPassing {
-  var viewController: ___VARIABLE_sceneName___ViewController?
-  var dataStore: ___VARIABLE_sceneName___DataStore?
-  
-  // MARK: Routing
+    var viewController: ___VARIABLE_sceneName___ViewController?
+    var dataStore: ___VARIABLE_sceneName___DataStore?
 
-  func routeToSomewhere() {
-    routeToSomewhere(segue: nil)
-  }
-  
-  func routeToSomewhere(segue: UIStoryboardSegue?) {
-    if let segue = segue {
-      let destinationVC = segue.destination as! ___VARIABLE_sceneName___ViewController
-      var destinationDS = destinationVC.router!.dataStore!
-      passDataTo(&destinationDS, from: dataStore!)
-    } else {
-      let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SomewhereViewController") as! ___VARIABLE_sceneName___ViewController
-      var destinationDS = destinationVC.router!.dataStore!
-      passDataTo(&destinationDS, from: dataStore!)
-      viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    // MARK: Routing
+
+    func routeToSomewhere() {
+        routeToSomewhere(segue: nil)
     }
-  }
-  
-  // MARK: Data Passing
-  
-  func passDataTo(_ destinationDS: inout ___VARIABLE_sceneName___DataStore, from sourceDS: ___VARIABLE_sceneName___DataStore) {
-    destinationDS.attribute = sourceDS.attribute
-  }
+
+    func routeToSomewhere(segue: UIStoryboardSegue?) {
+        if let segue = segue {
+            let destinationVC = segue.destination as! ___VARIABLE_sceneName___ViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataTo(&destinationDS, from: dataStore!)
+        }
+        else {
+            let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SomewhereViewController") as! ___VARIABLE_sceneName___ViewController
+            var destinationDS = destinationVC.router!.dataStore!
+            passDataTo(&destinationDS, from: dataStore!)
+            viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+    }
+
+    // MARK: Data Passing
+
+    func passDataTo(_ destinationDS: inout ___VARIABLE_sceneName___DataStore, from sourceDS: ___VARIABLE_sceneName___DataStore) {
+        destinationDS.attribute = sourceDS.attribute
+    }
 }

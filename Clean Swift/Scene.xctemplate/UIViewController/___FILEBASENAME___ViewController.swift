@@ -13,142 +13,142 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
-  func displayFetchFromDataStoreResult(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)  
-  func display___VARIABLE_sceneName___Result(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel)
+    func displayFetchFromDataStoreResult(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)  
+    func display___VARIABLE_sceneName___Result(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel)
 }
 
 class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_sceneName___DisplayLogic {
 
-  // MARK: Properties
+    // MARK: Properties
 
-  var router: (NSObjectProtocol & ___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)?
-  var interactor: ___VARIABLE_sceneName___BusinessLogic?
+    var router: (NSObjectProtocol & ___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)?
+    var interactor: ___VARIABLE_sceneName___BusinessLogic?
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup() {
-    let viewController = self
-    let interactor = ___VARIABLE_sceneName___Interactor()
-    let presenter = ___VARIABLE_sceneName___Presenter()
-    let router = ___VARIABLE_sceneName___Router()
+    // MARK: Object lifecycle
 
-    viewController.router = router
-    viewController.interactor = interactor
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // if let scene = segue.identifier {
-    //   let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-    //   if let router = router, router.responds(to: selector) {
-    //     router.perform(selector, with: segue)
-    //   }
-    // }
-  }
-  
-  // MARK: View Lifecycle
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupTexts()
-  }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    setupFetchFromDataStore()
-  }
-    
-  // MARK: Texts
+    // MARK: Setup
 
-  var someLabel = UILabel()
-  func setupTexts() {
+    private func setup() {
+        let viewController = self
+        let interactor = ___VARIABLE_sceneName___Interactor()
+        let presenter = ___VARIABLE_sceneName___Presenter()
+        let router = ___VARIABLE_sceneName___Router()
 
-    // MARK: Font Setting
+        viewController.router = router
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
 
-    let fontName = "A font name"
-    let fontSize = CGFloat(14.0)
-    var font     = UIFont(name: fontName, size: fontSize)
+    // MARK: Routing
 
-    if font == nil { font = UIFont.systemFont(ofSize: fontSize) }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if let scene = segue.identifier {
+        //   let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+        //   if let router = router, router.responds(to: selector) {
+        //     router.perform(selector, with: segue)
+        //   }
+        // }
+    }
+
+    // MARK: View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTexts()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFetchFromDataStore()
+    }
 
     // MARK: Texts
 
-    someLabel.text = "Some Text"
+    var someLabel = UILabel()
+    func setupTexts() {
 
-    // MARK: Button
+        // MARK: Font Setting
 
-    //let text = Localiser.sharedInstance.string(for: "Module.Sub Module.Element")
-    let text = ""
-    someButton.setTitle(text, for: .normal)
-    someButton.titleLabel?.font = font
-  }
+        let fontName = "A font name"
+        let fontSize = CGFloat(14.0)
+        var font     = UIFont(name: fontName, size: fontSize)
 
-  // MARK: Fetch Data From DataStore
+        if font == nil { font = UIFont.systemFont(ofSize: fontSize) }
 
-  @IBOutlet var userAttributeLabel: UILabel!
-  func setupFetchFromDataStore() {
-    let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
-    interactor?.fetchFromDataStore(with: request)
-  }
-  
-  func displayFetchFromDataStoreResult(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
-    someLabel.text = viewModel.userAttribute
-  }  
+        // MARK: Texts
 
-  // MARK: Use Case - ___VARIABLE_sceneName___
+        someLabel.text = "Some Text"
 
-  var someButton = UIButton()
-  @IBAction func someButtonClicked(_ sender: Any) {
-    let request = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request(variableToPass: someLabel.text)
-    interactor?.___VARIABLE_sceneName___(with: request)
-  }
+        // MARK: Button
 
-  func display___VARIABLE_sceneName___Result(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel) {
-    if viewModel.containsErrors {
-
-      // 1. Handle UIElement changes based on user input
-
-      // for handling errors that is caused
-      // by invalid user input
-      print(viewModel.variablePassed?.errorMessage ?? "")
-
-      // 2. Handle Generic Error Message
-
-      // for handling errors that is caused
-      // by service call from worker
-      if viewModel.genericErrorMessage != nil {
-        
-        // handle generic error
-        print(viewModel.genericErrorMessage ?? "")
-      }
+        //let text = Localiser.sharedInstance.string(for: "Module.Sub Module.Element")
+        let text = ""
+        someButton.setTitle(text, for: .normal)
+        someButton.titleLabel?.font = font
     }
-    else {
 
-      // 1. Handle UIElement changes based on user input
+    // MARK: Use Case - Fetch Data From DataStore
 
-      // set UIElements back to normal state
-
-      // 2. Route to the screen after
-
-      // route to next screen
-      router?.routeToSomewhere()
+    @IBOutlet var userAttributeLabel: UILabel!
+    func setupFetchFromDataStore() {
+        let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+        interactor?.fetchFromDataStore(with: request)
     }
-  }
+
+    func displayFetchFromDataStoreResult(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
+        someLabel.text = viewModel.userAttribute
+    }  
+
+    // MARK: Use Case - ___VARIABLE_sceneName___
+
+    var someButton = UIButton()
+    @IBAction func someButtonClicked(_ sender: Any) {
+        let request = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.Request(variableToPass: someLabel.text)
+        interactor?.___VARIABLE_sceneName___(with: request)
+    }
+
+    func display___VARIABLE_sceneName___Result(with viewModel: ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___.ViewModel) {
+        if viewModel.containsErrors {
+
+            // 1. Handle UIElement changes based on user input
+
+            // for handling errors that is caused
+            // by invalid user input
+            print(viewModel.variablePassed?.errorMessage ?? "")
+
+            // 2. Handle Generic Error Message
+
+            // for handling errors that is caused
+            // by service call from worker
+            if viewModel.genericErrorMessage != nil {
+
+                // handle generic error
+                print(viewModel.genericErrorMessage ?? "")
+            }
+        }
+        else {
+
+            // 1. Handle UIElement changes based on user input
+
+            // set UIElements back to normal state
+
+            // 2. Route to the screen after
+
+            // route to next screen
+            router?.routeToSomewhere()
+        }
+    }
 }
