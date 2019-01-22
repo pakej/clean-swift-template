@@ -10,6 +10,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___PresentationLogic {
     func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response)
+    func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response)
     func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response)
 }
 
@@ -21,7 +22,14 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
     func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
         let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: response.exampleVariable)
         viewController?.displayFetchFromDataStore(with: viewModel)
-    }  
+    }
+
+    // MARK: Use Case - Track Analytics
+
+    func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
+        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
+        viewController?.displayTrackAnalytics(with: viewModel)
+    }    
 
     // MARK: Use Case - ___VARIABLE_sceneName___
 
