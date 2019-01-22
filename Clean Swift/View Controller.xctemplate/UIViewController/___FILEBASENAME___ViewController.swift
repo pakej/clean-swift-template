@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
-    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)  
+    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)
+    func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)    
     func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel)
 }
 
@@ -65,6 +66,17 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
         exampleLabel.text = viewModel.exampleVariable
+    }
+
+    // MARK: Use Case - Track Analytics
+
+    func trackAnalytics() {
+        let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request()
+        interactor?.trackAnalytics(with: request)
+    }
+
+    func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel) {
+        // do something after tracking analytics (if needed)
     }
 
     // MARK: Use Case - ___VARIABLE_sceneName___

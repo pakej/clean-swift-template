@@ -29,7 +29,7 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
     func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
         let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
         viewController?.displayTrackAnalytics(with: viewModel)
-    }    
+    }
 
     // MARK: Use Case - ___VARIABLE_sceneName___
 
