@@ -43,6 +43,11 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
             displayFetchFromDataStoreCalled = true
         }
 
+        var displayTrackAnalyticsCalled = false
+        func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel) {
+            displayTrackAnalyticsCalled = true
+        }
+
         var displayPerform___VARIABLE_sceneName___Called = false
         var perform___VARIABLE_sceneName___ViewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel!
         func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel) {
@@ -64,6 +69,19 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.displayFetchFromDataStoreCalled, "presentFetchFromDataStore(with:) should ask the view controller to display the result")
+    }
+
+    func testPresentTrackAnalyticsShouldAskTheViewControllerToDisplay() {
+        // given
+        let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
+        sut.viewController = spy
+        let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
+
+        // when
+        sut.presentTrackAnalytics(with: response)
+
+        // then
+        XCTAssertTrue(spy.displayTrackAnalyticsCalled, "presentTrackAnalytics(with:) should ask the view controller to display the result")
     }
 
     func testPresentPerform___VARIABLE_sceneName___ShouldAskTheViewControllerToDisplay() {

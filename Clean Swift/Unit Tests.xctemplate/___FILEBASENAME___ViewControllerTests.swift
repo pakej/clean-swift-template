@@ -53,6 +53,11 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
             fetchFromDataStoreCalled = true
         }
 
+        var trackAnalyticsCalled = false
+        func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
+            trackAnalyticsCalled = true
+        }
+
         var perform___VARIABLE_sceneName___Called = false
         func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request) {
             perform___VARIABLE_sceneName___Called = true
@@ -95,6 +100,30 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         // then
         XCTAssertEqual(sut.exampleLabel.text, exampleVariable, "displayDataFetchedFromDataStore(with:) should display the correct example label text")
     }
+
+    func testShouldTrackAnalyticsWhenNeeded() {
+        // given
+        let spy = ___VARIABLE_sceneName___BusinessLogicSpy()
+        sut.interactor = spy
+
+        // when
+        sut.trackAnalytics()
+
+        // then
+        XCTAssertTrue(spy.trackAnalyticsCalled, "When needed, view controller should ask the interactor to track analytics")
+    }
+
+    func testShouldDisplayTrackAnalytics() {
+        // given
+        sut.trackAnalytics()
+        
+        // when
+        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
+        sut.displayTrackAnalytics(with: viewModel)
+        
+        // then
+        // assert something here based on use case
+    }    
     
     func testUnsuccessful___VARIABLE_sceneName___ShouldShowErrorAsLabel() {
         // given
