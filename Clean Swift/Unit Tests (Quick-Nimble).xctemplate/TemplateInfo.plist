@@ -48,13 +48,13 @@
     </dict>
     <dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___InteractorTests</string>
+			<string>___VARIABLE_sceneName:identifier___InteractorSpec</string>
 			<key>Description</key>
-			<string>The interactor tests name</string>
+			<string>The interactor spec name</string>
 			<key>Identifier</key>
-			<string>interactorTestsName</string>
+			<string>interactorSpecName</string>
 			<key>Name</key>
-			<string>Interactor Tests Name:</string>
+			<string>Interactor Spec Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
