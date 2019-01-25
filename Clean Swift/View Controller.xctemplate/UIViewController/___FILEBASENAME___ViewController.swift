@@ -56,6 +56,11 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         setupFetchFromDataStore()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        trackAnalytics()
+    }
+
     // MARK: Use Case - Fetch Data From DataStore
 
     @IBOutlet var exampleLabel: UILabel! = UILabel()

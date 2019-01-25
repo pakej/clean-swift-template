@@ -71,7 +71,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         var routeToNextCalled = false
         override func routeToNext() {
             routeToNextCalled = true
-        }        
+        }
     }
 
     // MARK: - Tests
@@ -101,13 +101,14 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.exampleLabel.text, exampleVariable, "displayDataFetchedFromDataStore(with:) should display the correct example label text")
     }
 
-    func testShouldTrackAnalyticsWhenNeeded() {
+    func testShouldTrackAnalyticsWhenViewWillAppear() {
         // given
         let spy = ___VARIABLE_sceneName___BusinessLogicSpy()
         sut.interactor = spy
 
         // when
-        sut.trackAnalytics()
+        loadView()
+        sut.viewWillAppear(true)
 
         // then
         XCTAssertTrue(spy.trackAnalyticsCalled, "When needed, view controller should ask the interactor to track analytics")
