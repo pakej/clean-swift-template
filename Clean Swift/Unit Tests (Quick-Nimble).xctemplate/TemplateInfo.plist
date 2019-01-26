@@ -62,13 +62,13 @@
     </dict>
     <dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___PresenterTests</string>
+			<string>___VARIABLE_sceneName:identifier___PresenterSpec</string>
 			<key>Description</key>
-			<string>The presenter tests name</string>
+			<string>The presenter spec name</string>
 			<key>Identifier</key>
-			<string>presenterTestsName</string>
+			<string>presenterSpecName</string>
 			<key>Name</key>
-			<string>Presenter Tests Name:</string>
+			<string>Presenter Spec Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
