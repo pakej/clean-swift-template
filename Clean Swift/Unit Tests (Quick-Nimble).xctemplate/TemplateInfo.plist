@@ -76,13 +76,13 @@
     </dict>
     <dict>
 			<key>Default</key>
-			<string>___VARIABLE_sceneName:identifier___WorkerTests</string>
+			<string>___VARIABLE_sceneName:identifier___WorkerSpec</string>
 			<key>Description</key>
-			<string>The worker tests name</string>
+			<string>The worker spec name</string>
 			<key>Identifier</key>
-			<string>workerTestsName</string>
+			<string>workerSpecName</string>
 			<key>Name</key>
-			<string>Worker Tests Name:</string>
+			<string>Worker Spec Name:</string>
 			<key>Required</key>
 			<true/>
 			<key>Type</key>
