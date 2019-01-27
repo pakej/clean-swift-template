@@ -10,6 +10,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___BusinessLogic {
     func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request)
+    func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request)
     func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request)
 }
 
@@ -20,7 +21,6 @@ protocol ___VARIABLE_sceneName___DataStore {
 class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic, ___VARIABLE_sceneName___DataStore {
     var worker: ___VARIABLE_sceneName___Worker? = ___VARIABLE_sceneName___Worker()
     var presenter: ___VARIABLE_sceneName___PresentationLogic?
-
     var exampleVariable: String?
 
     // MARK: Use Case - Fetch Data From DataStore
@@ -29,6 +29,15 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         self.exampleVariable = ""
         let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response(exampleVariable: exampleVariable)
         presenter?.presentFetchFromDataStore(with: response)
+    }
+
+    // MARK: Use Case - Track Analytics
+
+    func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
+        // call analytics library/wrapper here to track analytics
+
+        let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
+        presenter?.presentTrackAnalytics(with: response)
     }
 
     // MARK: Use Case - ___VARIABLE_sceneName___

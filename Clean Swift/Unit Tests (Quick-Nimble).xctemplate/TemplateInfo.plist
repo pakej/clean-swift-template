@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DefaultCompletionName</key>
+	<string>MyScene</string>
+  <key>Description</key>
+  <string>This generates unit tests for your scene using Uncle Bob's clean architecture. It consists of three test files for view controller, interactor, and presenter.</string>
+  <key>Kind</key>
+  <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+  <key>Options</key>
+  <array>
+		<dict>
+			<key>Description</key>
+			<string>The name of the scene to create tests for</string>
+			<key>Identifier</key>
+			<string>sceneName</string>
+			<key>Name</key>
+			<string>Scene Name:</string>
+			<key>NotPersisted</key>
+			<true/>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>text</string>
+		</dict>
+    <dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___</string>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Type</key>
+			<string>static</string>
+    </dict>
+    <dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___ViewControllerSpec</string>
+			<key>Description</key>
+			<string>The view controller spec name</string>
+			<key>Identifier</key>
+			<string>viewControllerSpecName</string>
+			<key>Name</key>
+			<string>View Controller Spec Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+    </dict>
+    <dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___InteractorSpec</string>
+			<key>Description</key>
+			<string>The interactor spec name</string>
+			<key>Identifier</key>
+			<string>interactorSpecName</string>
+			<key>Name</key>
+			<string>Interactor Spec Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+    </dict>
+    <dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___PresenterSpec</string>
+			<key>Description</key>
+			<string>The presenter spec name</string>
+			<key>Identifier</key>
+			<string>presenterSpecName</string>
+			<key>Name</key>
+			<string>Presenter Spec Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+    </dict>
+    <dict>
+			<key>Default</key>
+			<string>___VARIABLE_sceneName:identifier___WorkerSpec</string>
+			<key>Description</key>
+			<string>The worker spec name</string>
+			<key>Identifier</key>
+			<string>workerSpecName</string>
+			<key>Name</key>
+			<string>Worker Spec Name:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+    </dict>
+  </array>
+  <key>Platforms</key>
+  <array>
+		<string>com.apple.platform.iphoneos</string>
+  </array>
+	<key>SortOrder</key>
+	<string>7</string>
+  <key>Summary</key>
+  <string>This generates unit tests for your scene using Uncle Bob's clean architecture.</string>
+</dict>
+</plist>

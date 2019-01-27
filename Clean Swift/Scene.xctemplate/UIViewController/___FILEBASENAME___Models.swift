@@ -23,7 +23,18 @@ enum ___VARIABLE_sceneName___Models {
         struct ViewModel {
             var exampleVariable: String?
         }
-    }  
+    }
+
+    enum TrackAnalytics {
+        struct Request {
+        }
+
+        struct Response {
+        }
+
+        struct ViewModel {
+        }
+    }
 
     enum Perform___VARIABLE_sceneName___ {
         struct Request {

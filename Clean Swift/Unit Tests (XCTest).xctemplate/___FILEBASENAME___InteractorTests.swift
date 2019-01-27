@@ -43,6 +43,11 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
             presentFetchFromDataStoreCalled = true
         }
 
+        var presentTrackAnalyticsCalled = false
+        func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
+            presentTrackAnalyticsCalled = true
+        }
+
         var presentPerform___VARIABLE_sceneName___Called = false
         func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response) {
             presentPerform___VARIABLE_sceneName___Called = true
@@ -79,6 +84,19 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(with:) should ask the presenter to format the result")
+    }
+
+    func testTrackAnalyticsShouldAskPresenterToFormat() {
+        // given
+        let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request()
+        let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
+        sut.presenter = spy
+
+        // when
+        sut.trackAnalytics(with: request)
+
+        // then
+        XCTAssertTrue(spy.presentTrackAnalyticsCalled, "trackAnalytics(with:) should ask the presenter to format the result")
     }
 
     func testPerform___VARIABLE_sceneName___ShouldValidateExampleVariable() {
