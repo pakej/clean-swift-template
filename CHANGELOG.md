@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file
 
+## 5.2.0
+
+- Added TrackAnalytics use case
+- Update unit test templates to handle TrackAnalytics use case
+- Added unit test templates using quick and nimble
+
+## 5.1.0
+
+- Updated templates with Perform use case
+- Updated unit test templates
+
+## 5.0.0
+
+- Proper version release
+
 ## 4.0.3
 
 - Change indentations to 4 spaces
