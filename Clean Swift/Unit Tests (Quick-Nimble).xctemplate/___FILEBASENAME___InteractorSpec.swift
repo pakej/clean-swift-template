@@ -143,18 +143,24 @@ extension ___VARIABLE_sceneName___InteractorSpec {
         // MARK: Spied Methods
 
         var presentFetchFromDataStoreCalled = false
+        var fetchFromDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response!
         func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
             presentFetchFromDataStoreCalled = true
+            fetchFromDataStoreResponse = response
         }
 
         var presentTrackAnalyticsCalled = false
+        var trackAnalyticsResponse: ___VARIABLE_sceneName___Models.TrackAnalytics.Response!
         func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
             presentTrackAnalyticsCalled = true
+            trackAnalyticsResponse = response
         }
 
         var presentPerform___VARIABLE_sceneName___Called = false
+        var perform___VARIABLE_sceneName___Response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response!
         func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response) {
             presentPerform___VARIABLE_sceneName___Called = true
+            perform___VARIABLE_sceneName___Response = response
         }
     }
     

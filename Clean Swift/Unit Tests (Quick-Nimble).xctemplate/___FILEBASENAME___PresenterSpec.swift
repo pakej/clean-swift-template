@@ -113,13 +113,17 @@ extension ___VARIABLE_sceneName___PresenterSpec {
         // MARK: Spied Methods
 
         var displayFetchFromDataStoreCalled = false
+        var fetchFromDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel!
         func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
             displayFetchFromDataStoreCalled = true
+            fetchFromDataStoreViewModel = viewModel
         }
 
         var displayTrackAnalyticsCalled = false
+        var trackAnalyticsViewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel!
         func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel) {
             displayTrackAnalyticsCalled = true
+            trackAnalyticsViewModel = viewModel
         }
 
         var displayPerform___VARIABLE_sceneName___Called = false
