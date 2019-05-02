@@ -175,18 +175,24 @@ extension ___VARIABLE_sceneName___ViewControllerSpec {
         // MARK: Spied Methods
 
         var fetchFromDataStoreCalled = false
+        var fetchFromDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request!
         func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
             fetchFromDataStoreCalled = true
+            fetchFromDataStoreRequest = request
         }
 
         var trackAnalyticsCalled = false
+        var trackAnalyticsRequest: ___VARIABLE_sceneName___Models.TrackAnalytics.Request!
         func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
             trackAnalyticsCalled = true
+            trackAnalyticsRequest = request
         }
 
         var perform___VARIABLE_sceneName___Called = false
+        var ___VARIABLE_sceneName___Request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request!
         func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request) {
             perform___VARIABLE_sceneName___Called = true
+            ___VARIABLE_sceneName___Request = request
         }
     }
     
