@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file
 
+## 5.2.1
+
+- Spied use case models for checking passed values
+- amend typos on some function signatures
+
 ## 5.2.0
 
 - Added TrackAnalytics use case
