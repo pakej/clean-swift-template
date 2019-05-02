@@ -81,7 +81,7 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                 var response: (isSuccessful: Bool, error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>?)!
                 
                 // when
-                sut.performMine(completion: { (isSuccessful, error) in
+                sut.perform___VARIABLE_sceneName___(completion: { (isSuccessful, error) in
                     response = (isSuccessful, error)
                 })
 

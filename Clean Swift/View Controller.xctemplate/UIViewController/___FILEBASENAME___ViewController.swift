@@ -56,7 +56,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         setupFetchFromDataStore()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         trackAnalytics()
     }
