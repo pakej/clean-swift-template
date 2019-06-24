@@ -19,19 +19,19 @@ This is a CleanSwift template modified from the original, to accomodate common p
     - The template generates a file appended with the word `models` to make it more obvious.
 
 1. Interactor, Presenter & ViewController
-    - Each Use Case logic would have the comment header `// MARK: Use Case -` for better readability between the Use Case & other functions.
+    - Each Use Case logic would have the comment header `// MARK: - Use Case -` for better readability between the Use Case & other functions.
 
 1. Unit Test
     - The templates are also updated to test the pre-built use cases.
     - A template that is written using the Quick and Nimble libraries are also added if it's preferred over XCTest.
 
 1. Removed
-    - `UICollectionViewController` and `UITableViewController` templates are removed since the templates use the `UIViewController` templates anyway.    
+    - `UICollectionViewController` and `UITableViewController` templates are removed since the templates use the `UIViewController` templates anyway.
 
 ## Installation
 
 1. Clone this repository
-1. From this repository:  
+1. From this repository:
 
     To install the Clean Swift Xcode templates,run:
     ```bash
