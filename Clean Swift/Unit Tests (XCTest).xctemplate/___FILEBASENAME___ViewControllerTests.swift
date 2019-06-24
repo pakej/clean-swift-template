@@ -118,7 +118,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
     func testShouldDisplayTrackAnalyticsWhenDisplayTrackAnalytics() {
         // given
         loadView()
-        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .screenView)
+        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
 
         // when
         sut.displayTrackAnalytics(with: viewModel)

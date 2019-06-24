@@ -93,10 +93,10 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
 
         // when
-        sut.fetchFromDataStore(with: response)
+        sut.fetchFromDataStore(with: request)
 
         // then
-        XCTAssertTrue(spy.fetchFromDataStoreCalled, "fetchFromDataStore() should ask presenter to format the result")
+        XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore() should ask the presenter to format the result")
     }
 
     func testTrackAnalyticsShouldAskWorkerToTrackAnalytics() {
@@ -109,7 +109,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         sut.trackAnalytics(with: request)
 
         // then
-        XCTAssertTrue(spy.trackAnalyticsCalled, "trackAnalytics(with:) should ask worker to track analytics")
+        XCTAssertTrue(spy.trackAnalyticsCalled, "trackAnalytics(with:) should ask the worker to track analytics")
     }
 
     func testTrackAnalyticsShouldAskPresenterToFormat() {
@@ -122,7 +122,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         sut.trackAnalytics(with: request)
 
         // then
-        XCTAssertTrue(spy.presentTrackAnalyticsCalled, "trackAnalytics(with:) should ask presenter to format the result")
+        XCTAssertTrue(spy.presentTrackAnalyticsCalled, "trackAnalytics(with:) should ask the presenter to format the result")
     }
 
     func testPerform___VARIABLE_sceneName___ShouldValidateExampleVariable() {
@@ -136,8 +136,9 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.validateExampleVariableCalled, "perform___VARIABLE_sceneName___(with:) should validate example variable")
+    }
 
-    func testPerform___VARIABLE_sceneName___ShouldNotAskWorkerToPerform___VARIABLE_sceneName___IfThereAreError() {
+    func testPerform___VARIABLE_sceneName___ShouldNotAskWorkerToPerform___VARIABLE_sceneName___IfThereAreErrors() {
         // given
         let spy = ___VARIABLE_sceneName___WorkerSpy()
         sut.worker = spy
@@ -147,10 +148,10 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         sut.perform___VARIABLE_sceneName___(with: request)
 
         // then
-        XCTAssertFalse(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should not ask worker to perform ___VARIABLE_sceneName___")
+        XCTAssertFalse(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should not ask the worker to perform ___VARIABLE_sceneName___")
     }
 
-    func testPerform___VARIABLE_sceneName___ShouldAskWorkerToPerform___VARIABLE_sceneName___IfThereAreNoError() {
+    func testPerform___VARIABLE_sceneName___ShouldAskWorkerToPerform___VARIABLE_sceneName___IfThereAreNoErrors() {
         // given
         let spy = ___VARIABLE_sceneName___WorkerSpy()
         sut.worker = spy
@@ -160,7 +161,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         sut.perform___VARIABLE_sceneName___(with: request)
 
         // then
-        XCTAssertTrue(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask worker to perform ___VARIABLE_sceneName___")
+        XCTAssertTrue(spy.perform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask the worker to perform ___VARIABLE_sceneName___")
     }
 
     func testPerform___VARIABLE_sceneName___ShouldAskPresenterToFormat() {
@@ -175,6 +176,6 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         waitForExpectations(timeout: 1)
 
         // then
-        XCTAssertTrue(spy.presentPerform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask presenter to format the result")
+        XCTAssertTrue(spy.presentPerform___VARIABLE_sceneName___Called, "perform___VARIABLE_sceneName___(with:) should ask the presenter to format the result")
     }
 }
