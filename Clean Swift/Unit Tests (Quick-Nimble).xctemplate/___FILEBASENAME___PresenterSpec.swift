@@ -3,7 +3,7 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Quick
@@ -12,27 +12,27 @@ import Nimble
 
 class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
     override func spec() {
-        
+
         // MARK: - Subject Under Test (SUT)
-        
+
         var sut: ___VARIABLE_sceneName___Presenter!
-        
+
         // MARK: - Test Doubles
-        
+
         var displayLogicSpy: ___VARIABLE_sceneName___DisplayLogicSpy!
-        
+
         // MARK: - Tests
-        
+
         beforeEach {
             setupInitialUserState()
             setupPresenter()
             setupDisplayLogic()
         }
-        
+
         afterEach {
             sut = nil
         }
-        
+
         // MARK: Use Cases
 
         describe("present fetch from data store") {
@@ -87,17 +87,17 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
                 expect(displayLogicSpy.displayPerform___VARIABLE_sceneName___Called).to(beTrue())
             })
         }
-        
+
         // MARK: - Test Helpers
-        
+
         func setupInitialUserState() {
             // some initial user state setup
         }
-        
+
         func setupPresenter() {
             sut = ___VARIABLE_sceneName___Presenter()
         }
-        
+
         func setupDisplayLogic() {
             displayLogicSpy = ___VARIABLE_sceneName___DisplayLogicSpy()
             sut.viewController = displayLogicSpy

@@ -3,7 +3,7 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -27,6 +27,7 @@ enum ___VARIABLE_sceneName___Models {
 
     enum TrackAnalytics {
         struct Request {
+            var event: AnalyticsEvents
         }
 
         struct Response {
@@ -51,6 +52,10 @@ enum ___VARIABLE_sceneName___Models {
     }
 
     // MARK: - View Models
+
+    enum AnalyticsEvents {
+        case screenView, primaryButton
+    }
 
     enum ___VARIABLE_sceneName___ErrorType {
         case emptyExampleVariable, apiError

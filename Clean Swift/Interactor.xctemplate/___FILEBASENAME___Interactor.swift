@@ -3,7 +3,7 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -34,7 +34,7 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
     // MARK: Use Case - Track Analytics
 
     func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
-        // call analytics library/wrapper here to track analytics
+        worker?.trackAnalytics(event: request.event)
 
         let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
         presenter?.presentTrackAnalytics(with: response)
