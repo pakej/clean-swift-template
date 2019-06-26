@@ -19,11 +19,14 @@ protocol ___VARIABLE_sceneName___DataStore {
 }
 
 class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic, ___VARIABLE_sceneName___DataStore {
+
+    // MARK: - Properties
+
     var worker: ___VARIABLE_sceneName___Worker? = ___VARIABLE_sceneName___Worker()
     var presenter: ___VARIABLE_sceneName___PresentationLogic?
     var exampleVariable: String?
 
-    // MARK: Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch Data From DataStore
 
     func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
         self.exampleVariable = ""
@@ -31,7 +34,7 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         presenter?.presentFetchFromDataStore(with: response)
     }
 
-    // MARK: Use Case - Track Analytics
+    // MARK: - Use Case - Track Analytics
 
     func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
         worker?.trackAnalytics(event: request.event)
@@ -40,7 +43,7 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         presenter?.presentTrackAnalytics(with: response)
     }
 
-    // MARK: Use Case - ___VARIABLE_sceneName___
+    // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request) {
         worker?.validate(exampleVariable: request.exampleVariable)
