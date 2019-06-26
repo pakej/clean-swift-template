@@ -19,7 +19,6 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
 
         // MARK: - Test Doubles
 
-
         // MARK: - Tests
 
         beforeEach {

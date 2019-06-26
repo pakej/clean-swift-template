@@ -31,9 +31,10 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
 
         afterEach {
             sut = nil
+            displayLogicSpy = nil
         }
 
-        // MARK: Use Cases
+        // MARK: - Use Cases
 
         describe("present fetch from data store") {
             it("should ask view controller to display", closure: {

@@ -33,9 +33,11 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
 
         afterEach {
             sut = nil
+            presentationLogicSpy = nil
+            workerSpy = nil
         }
 
-        // MARK: Use Cases
+        // MARK: - Use Cases
 
         describe("fetch from data store") {
             it("should ask presenter to format", closure: {

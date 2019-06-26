@@ -35,9 +35,12 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
 
         afterEach {
             window = nil
+            sut = nil
+            businessLogicSpy = nil
+            routerSpy = nil
         }
 
-        // MARK: View Lifecycle
+        // MARK: - View Lifecycle
 
         describe("view did load") {
             it("should fetch from datastore", closure: {
@@ -64,9 +67,9 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
             })
         }
 
-        // MARK: IBActions/Delegates
+        // MARK: - IBActions/Delegates
 
-        // MARK: Display Logic
+        // MARK: - Display Logic
 
         describe("display fetch from datastore") {
             it("should display fetch from datastore", closure: {
