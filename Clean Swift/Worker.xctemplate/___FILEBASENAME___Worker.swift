@@ -43,9 +43,11 @@ class ___VARIABLE_sceneName___Worker {
         switch event {
         case .screenView:
             // call analytics library/wrapper here to track analytics
+            break
 
         case .primaryButton:
             // call analytics library/wrapper here to track analytics
+            break
         }
     }
 }
