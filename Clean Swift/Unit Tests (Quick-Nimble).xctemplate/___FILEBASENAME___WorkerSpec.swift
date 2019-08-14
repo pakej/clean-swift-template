@@ -91,7 +91,7 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
         }
 
         describe("track analytics") {
-            context("event is screen view", closure: {
+            context("when event is screen view", closure: {
                 it("should track analytics", closure: {
                     // given
                     let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .screenView)
