@@ -29,7 +29,7 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
             sut = nil
         }
 
-        // MARK: - Use Cases
+        // MARK: - Methods
 
         describe("validate example variable") {
             context("example variable is nil", closure: {
