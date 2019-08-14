@@ -61,7 +61,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                 sut.trackAnalytics(with: request)
             }
 
-            it("should ask worker to track anayltics", closure: {
+            it("should ask worker to track analytics", closure: {
                 // then
                 expect(workerSpy.trackAnalyticsCalled).to(beTrue())
             })
