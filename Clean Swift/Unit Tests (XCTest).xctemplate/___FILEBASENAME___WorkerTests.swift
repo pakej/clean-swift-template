@@ -91,10 +91,10 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
 
     func testTrackAnalyticsShouldTrackAnalyticsIfEventIsScreenView() {
         // given
-        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .screenView)
+        let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
 
         // when
-        sut.trackAnalytics(with: viewModel)
+        sut.trackAnalytics(event: event)
 
         // then
         // assert something here based on use case

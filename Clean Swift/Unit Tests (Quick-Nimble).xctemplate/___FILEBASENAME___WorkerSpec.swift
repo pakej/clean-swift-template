@@ -94,10 +94,10 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
             context("when event is screen view", closure: {
                 it("should track analytics", closure: {
                     // given
-                    let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .screenView)
+                    let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
 
                     // when
-                    sut.trackAnalytics(with: viewModel)
+                    sut.trackAnalytics(event: event)
 
                     // then
                     // assert something here based on use case
