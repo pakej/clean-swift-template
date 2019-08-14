@@ -99,15 +99,4 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
         // then
         // assert something here based on use case
     }
-
-    func testTrackAnalyticsShouldTrackAnalyticsIfEventIsPrimaryButton() {
-        // given
-        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .primaryButton)
-
-        // when
-        sut.trackAnalytics(with: viewModel)
-
-        // then
-        // assert something here based on use case
-    }
 }

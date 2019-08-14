@@ -103,19 +103,6 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                     // assert something here based on use case
                 })
             })
-
-            context("event is primary button", closure: {
-                it("should track analytics", closure: {
-                    // given
-                    let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel(event: .primaryButton)
-
-                    // when
-                    sut.trackAnalytics(with: viewModel)
-
-                    // then
-                    // assert something here based on use case
-                })
-            })
         }
 
         // MARK: - Test Helpers

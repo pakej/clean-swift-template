@@ -15,7 +15,7 @@ class ___VARIABLE_sceneName___Worker {
     typealias ErrorType = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType
     var error: ___VARIABLE_sceneName___Models.Error<ErrorType>?
 
-    // MARK: - Use Cases
+    // MARK: - Methods
 
     // MARK: Validation
 
@@ -42,10 +42,6 @@ class ___VARIABLE_sceneName___Worker {
     func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
         switch event {
         case .screenView:
-            // call analytics library/wrapper here to track analytics
-            break
-
-        case .primaryButton:
             // call analytics library/wrapper here to track analytics
             break
         }

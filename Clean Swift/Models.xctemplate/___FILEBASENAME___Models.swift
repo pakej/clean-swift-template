@@ -54,7 +54,7 @@ enum ___VARIABLE_sceneName___Models {
     // MARK: - View Models
 
     enum AnalyticsEvents {
-        case screenView, primaryButton
+        case screenView
     }
 
     enum ___VARIABLE_sceneName___ErrorType {

@@ -107,7 +107,6 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(_ sender: Any) {
-        trackAnalytics(event: .primaryButton)
         let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLabel.text)
         interactor?.perform___VARIABLE_sceneName___(with: request)
     }
