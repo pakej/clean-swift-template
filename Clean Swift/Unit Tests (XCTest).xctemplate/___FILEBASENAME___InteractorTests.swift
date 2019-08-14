@@ -171,7 +171,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request()
 
         // when
-        let expect = expectation(description: "Wait for perform___VARIABLE_sceneName___(completion:) to return")
+        let expect = expectation(description: "Wait for perform___VARIABLE_sceneName___(with:) to return")
         sut.perform___VARIABLE_sceneName___(with: request)
         expect.fulfill()
         waitForExpectations(timeout: 1)
