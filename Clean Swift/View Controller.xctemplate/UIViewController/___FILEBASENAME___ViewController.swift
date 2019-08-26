@@ -3,14 +3,14 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
     func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)
-    func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)    
+    func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)
     func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel)
 }
 
@@ -56,12 +56,30 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         setupFetchFromDataStore()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        trackAnalytics()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        trackScreenViewAnalytics()
+        registerNotifications()
     }
 
-    // MARK: Use Case - Fetch Data From DataStore
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterNotifications()
+    }
+
+    // MARK: - Notifications
+
+    func registerNotifications() {
+        let selector = #selector(trackScreenViewAnalytics)
+        let notification = UIApplication.didBecomeActiveNotification
+        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
+    }
+
+    func unregisterNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    // MARK: - Use Case - Fetch Data From DataStore
 
     @IBOutlet var exampleLabel: UILabel! = UILabel()
     func setupFetchFromDataStore() {
@@ -73,10 +91,14 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         exampleLabel.text = viewModel.exampleVariable
     }
 
-    // MARK: Use Case - Track Analytics
+    // MARK: - Use Case - Track Analytics
 
-    func trackAnalytics() {
-        let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request()
+    @objc func trackScreenViewAnalytics() {
+        trackAnalytics(event: .screenView)
+    }
+
+    func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
+        let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request(event: event)
         interactor?.trackAnalytics(with: request)
     }
 
@@ -84,7 +106,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         // do something after tracking analytics (if needed)
     }
 
-    // MARK: Use Case - ___VARIABLE_sceneName___
+    // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(_ sender: Any) {
         let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLabel.text)

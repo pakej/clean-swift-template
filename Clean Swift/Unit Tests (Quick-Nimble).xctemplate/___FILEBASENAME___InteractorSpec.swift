@@ -1,9 +1,9 @@
 //
 //  ___FILENAME___
-//  ___PROJECTNAME___
+//  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Quick
@@ -12,30 +12,32 @@ import Nimble
 
 class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
     override func spec() {
-        
+
         // MARK: - Subject Under Test (SUT)
-        
+
         var sut: ___VARIABLE_sceneName___Interactor!
-        
+
         // MARK: - Test Doubles
-        
+
         var presentationLogicSpy: ___VARIABLE_sceneName___PresentationLogicSpy!
         var workerSpy: ___VARIABLE_sceneName___WorkerSpy!
-        
+
         // MARK: - Tests
-        
+
         beforeEach {
             setupInitialUserState()
             setupInteractor()
             setupPresentationLogic()
             setupWorker()
         }
-        
+
         afterEach {
             sut = nil
+            presentationLogicSpy = nil
+            workerSpy = nil
         }
 
-        // MARK: Use Cases
+        // MARK: - Use Cases
 
         describe("fetch from data store") {
             it("should ask presenter to format", closure: {
@@ -49,20 +51,27 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                 expect(presentationLogicSpy.presentFetchFromDataStoreCalled).to(beTrue())
             })
         }
-        
+
         describe("track analytics") {
-            it("should ask presenter to format", closure: {
+            beforeEach {
                 // given
-                let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request()
+                let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request(event: .screenView)
 
                 // when
                 sut.trackAnalytics(with: request)
+            }
 
+            it("should ask worker to track analytics", closure: {
+                // then
+                expect(workerSpy.trackAnalyticsCalled).to(beTrue())
+            })
+
+            it("should ask presenter to format", closure: {
                 // then
                 expect(presentationLogicSpy.presentTrackAnalyticsCalled).to(beTrue())
             })
         }
-        
+
         describe("perform ___VARIABLE_sceneName___") {
             it("should validate example variable", closure: {
                 // given
@@ -74,7 +83,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                 // then
                 expect(workerSpy.validateExampleVariableCalled).to(beTrue())
             })
-            
+
             context("when there are error(s)", closure: {
                 it("should not ask worker to perform ___VARIABLE_sceneName___", closure: {
                     // given
@@ -87,7 +96,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                     expect(workerSpy.perform___VARIABLE_sceneName___Called).to(beFalse())
                 })
             })
-            
+
             context("when there are no errors", closure: {
                 it("should ask worker to perform ___VARIABLE_sceneName___", closure: {
                     // given
@@ -97,7 +106,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                     sut.perform___VARIABLE_sceneName___(with: request)
 
                     // then
-                    expect(workerSpy.perform___VARIABLE_sceneName___Called).to(beTrue())                    
+                    expect(workerSpy.perform___VARIABLE_sceneName___Called).to(beTrue())
                 })
             })
 
@@ -109,25 +118,25 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                 sut.perform___VARIABLE_sceneName___(with: request)
 
                 // then
-                expect(presentationLogicSpy.presentPerform___VARIABLE_sceneName___Called).to(beTrue())                
-            })            
+                expect(presentationLogicSpy.presentPerform___VARIABLE_sceneName___Called).toEventually(beTrue())
+            })
         }
 
         // MARK: - Test Helpers
-        
+
         func setupInitialUserState() {
             // some initial user state setup
         }
-        
+
         func setupInteractor() {
             sut = ___VARIABLE_sceneName___Interactor()
         }
-        
+
         func setupPresentationLogic() {
             presentationLogicSpy = ___VARIABLE_sceneName___PresentationLogicSpy()
             sut.presenter = presentationLogicSpy
         }
-        
+
         func setupWorker() {
             workerSpy = ___VARIABLE_sceneName___WorkerSpy()
             sut.worker = workerSpy
@@ -163,17 +172,23 @@ extension ___VARIABLE_sceneName___InteractorSpec {
             perform___VARIABLE_sceneName___Response = response
         }
     }
-    
+
     class ___VARIABLE_sceneName___WorkerSpy: ___VARIABLE_sceneName___Worker {
-        
+
         // MARK: Spied Methods
-        
+
         var validateExampleVariableCalled = false
         override func validate(exampleVariable: String?) {
             super.validate(exampleVariable: exampleVariable)
             validateExampleVariableCalled = true
         }
-        
+
+        var trackAnalyticsCalled = false
+        override func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
+            super.trackAnalytics(event: event)
+            trackAnalyticsCalled = true
+        }
+
         var perform___VARIABLE_sceneName___Called = false
         override func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Worker.ErrorType>?) -> Void) {
             super.perform___VARIABLE_sceneName___(completion: completion)

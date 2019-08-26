@@ -1,9 +1,9 @@
 //
 //  ___FILENAME___
-//  ___PROJECTNAME___
+//  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Quick
@@ -12,19 +12,19 @@ import Nimble
 
 class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
     override func spec() {
-        
+
         // MARK: - Subject Under Test (SUT)
-        
+
         var sut: ___VARIABLE_sceneName___ViewController!
         var window: UIWindow!
-        
+
         // MARK: - Test Doubles
-        
+
         var businessLogicSpy: ___VARIABLE_sceneName___BusinessLogicSpy!
         var routerSpy: ___VARIABLE_sceneName___RouterSpy!
-        
+
         // MARK: - Tests
-        
+
         beforeEach {
             window = UIWindow()
             setupInitialUserState()
@@ -32,17 +32,20 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
             setupBusinessLogic()
             setupRouter()
         }
-        
+
         afterEach {
             window = nil
+            sut = nil
+            businessLogicSpy = nil
+            routerSpy = nil
         }
-        
-        // MARK: View Lifecycle
+
+        // MARK: - View Lifecycle
 
         describe("view did load") {
             it("should fetch from datastore", closure: {
                 // given
-                
+
                 // when
                 loadView()
 
@@ -51,31 +54,31 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
             })
         }
 
-        describe("view will appear") {
+        describe("view did appear") {
             it("should track analytics", closure: {
                 // given
                 loadView()
-                
+
                 // when
-                sut.viewWillAppear(true)
+                sut.viewDidAppear(true)
 
                 // then
                 expect(businessLogicSpy.trackAnalyticsCalled).to(beTrue())
             })
         }
-        
-        // MARK: IBActions/Delegates
-        
-        // MARK: Display Logic
+
+        // MARK: - IBActions/Delegates
+
+        // MARK: - Display Logic
 
         describe("display fetch from datastore") {
             it("should display fetch from datastore", closure: {
                 // given
                 loadView()
-
-                // when
                 let exampleVariable = "Example string."
                 let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: exampleVariable)
+
+                // when
                 sut.displayFetchFromDataStore(with: viewModel)
 
                 // then
@@ -84,13 +87,13 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
         }
 
         describe("display track analytics") {
-            it("should display fetch from datastore", closure: {
+            it("should display track analytics", closure: {
                 // given
                 loadView()
+                let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
 
                 // when
-                let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
-                sut.displayTrackAnalytics(with: viewModel)            
+                sut.displayTrackAnalytics(with: viewModel)
 
                 // then
                 // assert something here based on use case
@@ -104,11 +107,11 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 beforeEach {
                     // given
                     loadView()
-
-                    // when
                     error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
                     error.message = "Example error"
                     let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: error)
+
+                    // when
                     sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
                 }
 
@@ -127,9 +130,9 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 it("should route to next", closure: {
                     // given
                     loadView()
-                    
-                    // when
                     let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: nil)
+
+                    // when
                     sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
 
                     // then
@@ -137,29 +140,29 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 })
             })
         }
-        
+
         // MARK: - Test Helpers
-        
+
         func setupInitialUserState() {
             // some initial user state setup
         }
-        
+
         func setupViewController() {
             let bundle = Bundle.main
             let storyboard = UIStoryboard(name: "Main", bundle: bundle)
             sut = storyboard.instantiateViewController(withIdentifier: "___VARIABLE_sceneName___ViewController") as? ___VARIABLE_sceneName___ViewController
         }
-        
+
         func setupBusinessLogic() {
             businessLogicSpy = ___VARIABLE_sceneName___BusinessLogicSpy()
             sut.interactor = businessLogicSpy
         }
-        
+
         func setupRouter() {
             routerSpy = ___VARIABLE_sceneName___RouterSpy()
             sut.router = routerSpy
         }
-        
+
         func loadView() {
             window.addSubview(sut.view)
             RunLoop.current.run(until: Date())
@@ -195,11 +198,11 @@ extension ___VARIABLE_sceneName___ViewControllerSpec {
             ___VARIABLE_sceneName___Request = request
         }
     }
-    
+
     class ___VARIABLE_sceneName___RouterSpy: ___VARIABLE_sceneName___Router {
-        
+
         // MARK: Spied Methods
-        
+
         var routeToNextCalled = false
         override func routeToNext() {
             routeToNextCalled = true

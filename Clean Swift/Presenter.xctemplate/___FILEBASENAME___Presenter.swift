@@ -3,7 +3,7 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -15,23 +15,26 @@ protocol ___VARIABLE_sceneName___PresentationLogic {
 }
 
 class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
+
+    // MARK: - Properties
+
     weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
 
-    // MARK: Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch Data From DataStore
 
     func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
         let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: response.exampleVariable)
         viewController?.displayFetchFromDataStore(with: viewModel)
     }
 
-    // MARK: Use Case - Track Analytics
+    // MARK: - Use Case - Track Analytics
 
     func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
         let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
         viewController?.displayTrackAnalytics(with: viewModel)
     }
 
-    // MARK: Use Case - ___VARIABLE_sceneName___
+    // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response) {
         var responseError = response.error

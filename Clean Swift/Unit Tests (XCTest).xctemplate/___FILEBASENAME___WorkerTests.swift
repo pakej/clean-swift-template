@@ -1,9 +1,9 @@
 //
 //  ___FILENAME___
-//  ___PROJECTNAME___
+//  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 @testable import ___PROJECTNAMEASIDENTIFIER___
@@ -23,6 +23,7 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
     }
 
     override func tearDown() {
+        sut = nil
         super.tearDown()
     }
 
@@ -47,34 +48,45 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
         XCTAssertNotNil(sut.error, "validate(exampleVariable:) should create an error if example variable is nil")
         XCTAssertEqual(sut.error?.type, ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable, "validate(exampleVariable:) should create an emptyExampleVariable error if example variable is nil")
     }
-    
+
     func testValidateExampleVariableShouldCreateEmptyExampleVariableErrorIfExampleVariableIsEmpty() {
         // given
         let exampleVariable = ""
-        
+
         // when
         sut.validate(exampleVariable: exampleVariable)
-        
+
         // then
         XCTAssertNotNil(sut.error, "validate(exampleVariable:) should create an error if example variable is empty")
         XCTAssertEqual(sut.error?.type, ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable, "validate(exampleVariable:) should create an emptyExampleVariable error if example variable is empty")
     }
-    
+
     func testValidateExampleVariableShouldNotCreateErrorIfExampleVariableIsNotNilOrEmpty() {
         // given
         let exampleVariable = "Example string."
-        
+
         // when
         sut.validate(exampleVariable: exampleVariable)
-        
+
         // then
         XCTAssertNil(sut.error, "validate(exampleVariable:) should not create an error if example variable is not nil or empty")
     }
-    
+
+    func testTrackAnalyticsShouldTrackAnalyticsIfEventIsScreenView() {
+        // given
+        let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
+
+        // when
+        sut.trackAnalytics(event: event)
+
+        // then
+        // assert something here based on use case
+    }
+
     func testPerform___VARIABLE_sceneName___ShouldAlwaysReturnTrueAndWithoutErrorsResponse() {
         // given
         var response: (isSuccessful: Bool, error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>?)!
-        
+
         // when
         let expect = expectation(description: "Wait for perform___VARIABLE_sceneName___(completion:) to return")
         sut.perform___VARIABLE_sceneName___ { (isSuccessful, error) in
@@ -82,7 +94,7 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
             expect.fulfill()
         }
         waitForExpectations(timeout: 1)
-        
+
         // then
         XCTAssertTrue(response.isSuccessful, "perform___VARIABLE_sceneName___(completion:) should always return true")
         XCTAssertNil(response.error, "perform___VARIABLE_sceneName___(completion:) should not return errors")
