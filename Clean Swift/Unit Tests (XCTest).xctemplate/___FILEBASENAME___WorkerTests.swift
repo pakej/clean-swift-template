@@ -72,6 +72,17 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
         XCTAssertNil(sut.error, "validate(exampleVariable:) should not create an error if example variable is not nil or empty")
     }
 
+    func testTrackAnalyticsShouldTrackAnalyticsIfEventIsScreenView() {
+        // given
+        let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
+
+        // when
+        sut.trackAnalytics(event: event)
+
+        // then
+        // assert something here based on use case
+    }
+
     func testPerform___VARIABLE_sceneName___ShouldAlwaysReturnTrueAndWithoutErrorsResponse() {
         // given
         var response: (isSuccessful: Bool, error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>?)!
@@ -87,16 +98,5 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
         // then
         XCTAssertTrue(response.isSuccessful, "perform___VARIABLE_sceneName___(completion:) should always return true")
         XCTAssertNil(response.error, "perform___VARIABLE_sceneName___(completion:) should not return errors")
-    }
-
-    func testTrackAnalyticsShouldTrackAnalyticsIfEventIsScreenView() {
-        // given
-        let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
-
-        // when
-        sut.trackAnalytics(event: event)
-
-        // then
-        // assert something here based on use case
     }
 }

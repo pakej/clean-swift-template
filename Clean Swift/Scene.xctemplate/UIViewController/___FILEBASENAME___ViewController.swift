@@ -70,7 +70,9 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     // MARK: - Notifications
 
     func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(trackScreenViewAnalytics), name: UIApplication.didBecomeActiveNotification, object: nil)
+        let selector = #selector(trackScreenViewAnalytics)
+        let notification = UIApplication.didBecomeActiveNotification
+        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
     }
 
     func unregisterNotifications() {

@@ -28,15 +28,6 @@ class ___VARIABLE_sceneName___Worker {
         }
     }
 
-    // MARK: Perform ___VARIABLE_sceneName___
-
-    func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<ErrorType>?) -> Void) {
-        let isSuccessful = true
-        let error: ___VARIABLE_sceneName___Models.Error<ErrorType>? = nil
-
-        completion(isSuccessful, error)
-    }
-
     // MARK: Track Analytics
 
     func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
@@ -45,5 +36,14 @@ class ___VARIABLE_sceneName___Worker {
             // call analytics library/wrapper here to track analytics
             break
         }
+    }
+
+    // MARK: Perform ___VARIABLE_sceneName___
+
+    func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<ErrorType>?) -> Void) {
+        let isSuccessful = true
+        let error: ___VARIABLE_sceneName___Models.Error<ErrorType>? = nil
+
+        completion(isSuccessful, error)
     }
 }

@@ -74,6 +74,21 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
             })
         }
 
+        describe("track analytics") {
+            context("when event is screen view", closure: {
+                it("should track analytics", closure: {
+                    // given
+                    let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
+
+                    // when
+                    sut.trackAnalytics(event: event)
+
+                    // then
+                    // assert something here based on use case
+                })
+            })
+        }
+
         describe("perform ___VARIABLE_sceneName___") {
             it("should always return true and without error response", closure: {
                 // given
@@ -87,21 +102,6 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                 // then
                 expect(response.isSuccessful).toEventually(beTrue())
                 expect(response.error).toEventually(beNil())
-            })
-        }
-
-        describe("track analytics") {
-            context("when event is screen view", closure: {
-                it("should track analytics", closure: {
-                    // given
-                    let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
-
-                    // when
-                    sut.trackAnalytics(event: event)
-
-                    // then
-                    // assert something here based on use case
-                })
             })
         }
 
