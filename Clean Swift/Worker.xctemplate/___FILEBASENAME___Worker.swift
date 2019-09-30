@@ -17,6 +17,14 @@ class ___VARIABLE_sceneName___Worker {
 
     // MARK: - Methods
 
+    // MARK: Fetch From Remote DataStore
+
+    func fetchFromRemoteDataStore() -> String {
+        // fetch something from backend,
+        // and return the values here
+        return ""
+    }
+
     // MARK: Validation
 
     func validate(exampleVariable: String?) {
@@ -24,7 +32,7 @@ class ___VARIABLE_sceneName___Worker {
             error = nil
         }
         else {
-            error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .emptyExampleVariable)
+            error = ___VARIABLE_sceneName___Models.Error<ErrorType>(type: .emptyExampleVariable)
         }
     }
 

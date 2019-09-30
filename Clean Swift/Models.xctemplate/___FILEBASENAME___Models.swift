@@ -17,13 +17,25 @@ enum ___VARIABLE_sceneName___Models {
         }
 
         struct Response {
+        }
+
+        struct ViewModel {
+            var exampleTranslation: String?
+        }
+    }
+
+    enum FetchFromRemoteDataStore {
+        struct Request {
+        }
+
+        struct Response {
             var exampleVariable: String?
         }
 
         struct ViewModel {
             var exampleVariable: String?
         }
-    }
+    }    
 
     enum TrackAnalytics {
         struct Request {
