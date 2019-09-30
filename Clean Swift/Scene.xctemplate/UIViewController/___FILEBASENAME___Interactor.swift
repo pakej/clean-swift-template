@@ -30,15 +30,14 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
     // MARK: - Use Case - Fetch From Local DataStore
 
     func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request) {
-        self.exampleVariable = ""
-        let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response(exampleVariable: exampleVariable)
+        let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
         presenter?.presentFetchFromLocalDataStore(with: response)
     }
 
     // MARK: - Use Case - Fetch From Remote DataStore
 
     func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
-        self.exampleVariable = ""
+        let exampleVariable = worker?.fetchFromRemoteDataStore()
         let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response(exampleVariable: exampleVariable)
         presenter?.presentFetchFromRemoteDataStore(with: response)
     }    
@@ -64,10 +63,12 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         }
 
         worker?.perform___VARIABLE_sceneName___(completion: {
-            [weak self] (isSuccessful, error) in
+            [weak self, request] (isSuccessful, error) in
 
             if isSuccessful {
                 // do something on success
+                let goodExample = request.exampleVariable ?? ""
+                self?.exampleVariable = goodExample
             }
 
             let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response(error: error)

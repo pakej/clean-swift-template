@@ -24,7 +24,8 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
     // MARK: - Use Case - Fetch From Local DataStore
 
     func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleVariable: response.exampleVariable)
+        let translation = "Some localised text."
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
         viewController?.displayFetchFromLocalDataStore(with: viewModel)
     }
 

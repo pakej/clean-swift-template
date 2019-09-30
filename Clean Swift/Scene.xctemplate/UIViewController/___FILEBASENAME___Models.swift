@@ -17,11 +17,10 @@ enum ___VARIABLE_sceneName___Models {
         }
 
         struct Response {
-            var exampleVariable: String?
         }
 
         struct ViewModel {
-            var exampleVariable: String?
+            var exampleTranslation: String?
         }
     }
 

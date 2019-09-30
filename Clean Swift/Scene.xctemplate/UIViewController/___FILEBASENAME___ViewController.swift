@@ -89,7 +89,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     }
 
     func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
-        exampleLocalLabel.text = viewModel.exampleVariable
+        exampleLocalLabel.text = viewModel.exampleTranslation
     }
 
     // MARK: - Use Case - Fetch From Remote DataStore
