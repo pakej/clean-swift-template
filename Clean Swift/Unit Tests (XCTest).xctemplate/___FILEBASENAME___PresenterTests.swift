@@ -46,6 +46,13 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
             fetchFromLocalDataStoreViewModel = viewModel
         }
 
+        var displayFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel!
+        func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+            displayFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreViewModel = viewModel
+        }
+
         var displayTrackAnalyticsCalled = false
         var trackAnalyticsViewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel!
         func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel) {
@@ -74,6 +81,19 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.displayFetchFromLocalDataStoreCalled, "presentFetchFromLocalDataStore(with:) should ask the view controller to display the result")
+    }
+
+    func testPresentFetchFromRemoteDataStoreShouldAskTheViewControllerToDisplay() {
+        // given
+        let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
+        sut.viewController = spy
+        let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+
+        // when
+        sut.presentFetchFromRemoteDataStore(with: response)
+
+        // then
+        XCTAssertTrue(spy.displayFetchFromRemoteDataStoreCalled, "presentFetchFromRemoteDataStore(with:) should ask the view controller to display the result")
     }
 
     func testPresentTrackAnalyticsShouldAskTheViewControllerToDisplay() {

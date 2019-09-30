@@ -31,6 +31,19 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
 
         // MARK: - Methods
 
+        describe("fetch from remote datastore") {
+            it("should return a string", closure: {
+                // given
+                let expectedOutput = ""
+
+                // when
+                let actualOutput = sut.fetchFromRemoteDataStore()
+
+                // then
+                expect(actualOutput).to(equal(expectedOutput))
+            })
+        }
+
         describe("validate example variable") {
             context("example variable is nil", closure: {
                 it("should create empty example variable error", closure: {

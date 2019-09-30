@@ -52,6 +52,26 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
             })
         }
 
+        describe("fetch from remote data store") {
+            beforeEach {
+                // given
+                let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+
+                // when
+                sut.fetchFromRemoteDataStore(with: request)
+            }
+
+            it("should ask worker to fetch from remote datastore", closure: {
+                // then
+                expect(workerSpy.fetchFromRemoteDataStoreCalled).to(beTrue())
+            })
+
+            it("should ask presenter to format", closure: {
+                // then
+                expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).to(beTrue())
+            })
+        }        
+
         describe("track analytics") {
             beforeEach {
                 // given
@@ -158,6 +178,13 @@ extension ___VARIABLE_sceneName___InteractorSpec {
             fetchFromLocalDataStoreResponse = response
         }
 
+        var presentFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response!
+        func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
+            presentFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreResponse = response
+        }        
+
         var presentTrackAnalyticsCalled = false
         var trackAnalyticsResponse: ___VARIABLE_sceneName___Models.TrackAnalytics.Response!
         func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
@@ -176,6 +203,12 @@ extension ___VARIABLE_sceneName___InteractorSpec {
     class ___VARIABLE_sceneName___WorkerSpy: ___VARIABLE_sceneName___Worker {
 
         // MARK: Spied Methods
+
+        var fetchFromRemoteDataStoreCalled = false
+        override func fetchFromRemoteDataStore() -> String {
+            fetchFromRemoteDataStoreCalled = true
+            return super.fetchFromRemoteDataStore()
+        }
 
         var validateExampleVariableCalled = false
         override func validate(exampleVariable: String?) {

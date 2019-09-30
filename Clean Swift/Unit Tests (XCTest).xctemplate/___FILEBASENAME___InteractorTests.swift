@@ -46,6 +46,13 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
             fetchFromLocalDataStoreResponse = response
         }
 
+        var presentFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response!
+        func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
+            presentFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreResponse = response
+        }        
+
         var presentTrackAnalyticsCalled = false
         var trackAnalyticsResponse: ___VARIABLE_sceneName___Models.TrackAnalytics.Response!
         func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
@@ -64,6 +71,12 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
     class ___VARIABLE_sceneName___WorkerSpy: ___VARIABLE_sceneName___Worker {
 
         // MARK: Spied Methods
+
+        var fetchFromRemoteDataStoreCalled = false
+        override func fetchFromRemoteDataStore() -> String {
+            fetchFromRemoteDataStoreCalled = true
+            return super.fetchFromRemoteDataStore()
+        }        
 
         var validateExampleVariableCalled = false
         override func validate(exampleVariable: String?) {
@@ -97,6 +110,32 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.presentFetchFromLocalDataStoreCalled, "fetchFromLocalDataStore(with:) should ask the presenter to format the result")
+    }
+
+    func testFetchFromRemoteDataStoreShouldAskWorkerToFetchFromRemoteDataStore() {
+        // given
+        let spy = ___VARIABLE_sceneName___WorkerSpy()
+        sut.worker = spy
+        let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+
+        // when
+        sut.fetchFromRemoteDataStore(with: request)
+
+        // then
+        XCTAssertTrue(spy.fetchFromRemoteDataStoreCalled, "fetchFromRemoteDataStore(with:) should ask the worker to fetch from remote data store")
+    }
+
+    func testFetchFromRemoteDataStoreShouldAskPresenterToFormat() {
+        // given
+        let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
+        sut.presenter = spy
+        let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+
+        // when
+        sut.fetchFromRemoteDataStore(with: request)
+
+        // then
+        XCTAssertTrue(spy.presentFetchFromRemoteDataStoreCalled, "fetchFromRemoteDataStore(with:) should ask the presenter to format the result")
     }
 
     func testTrackAnalyticsShouldAskWorkerToTrackAnalytics() {

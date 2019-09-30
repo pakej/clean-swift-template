@@ -49,6 +49,19 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
             })
         }
 
+        describe("present fetch from remote data store") {
+            it("should ask view controller to display", closure: {
+                // given
+                let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+
+                // when
+                sut.presentFetchFromRemoteDataStore(with: response)
+
+                // then
+                expect(displayLogicSpy.displayFetchFromRemoteDataStoreCalled).to(beTrue())
+            })
+        }        
+
         describe("present track analytics") {
             it("should ask view controller to display", closure: {
                 // given
@@ -119,6 +132,13 @@ extension ___VARIABLE_sceneName___PresenterSpec {
             displayFetchFromLocalDataStoreCalled = true
             fetchFromLocalDataStoreViewModel = viewModel
         }
+
+        var displayFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel!
+        func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+            displayFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreViewModel = viewModel
+        }        
 
         var displayTrackAnalyticsCalled = false
         var trackAnalyticsViewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel!
