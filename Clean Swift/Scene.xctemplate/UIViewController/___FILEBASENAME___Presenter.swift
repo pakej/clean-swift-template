@@ -50,11 +50,11 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
 
         if let error = responseError {
             switch error.type {
-                case .emptyExampleVariable:
-                    responseError?.message = "Localised empty/nil error message."
+            case .emptyExampleVariable:
+                responseError?.message = "Localised empty/nil error message."
 
-                case .apiError:
-                    responseError?.message = "Localised api error message."
+            case .apiError:
+                responseError?.message = "Localised api error message."
             }
         }
 

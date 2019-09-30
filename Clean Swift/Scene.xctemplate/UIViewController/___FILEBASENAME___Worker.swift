@@ -32,7 +32,7 @@ class ___VARIABLE_sceneName___Worker {
             error = nil
         }
         else {
-            error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .emptyExampleVariable)
+            error = ___VARIABLE_sceneName___Models.Error<ErrorType>(type: .emptyExampleVariable)
         }
     }
 
