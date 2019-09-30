@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___PresentationLogic {
-    func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response)
+    func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response)
     func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response)
     func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response)
 }
@@ -20,11 +20,11 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
 
     weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
 
-    // MARK: - Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch From Local DataStore
 
-    func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: response.exampleVariable)
-        viewController?.displayFetchFromDataStore(with: viewModel)
+    func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleVariable: response.exampleVariable)
+        viewController?.displayFetchFromLocalDataStore(with: viewModel)
     }
 
     // MARK: - Use Case - Track Analytics

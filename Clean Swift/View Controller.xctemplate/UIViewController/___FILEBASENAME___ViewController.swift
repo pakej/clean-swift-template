@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
-    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)
+    func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel)
     func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)
     func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel)
 }
@@ -53,7 +53,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFetchFromDataStore()
+        setupFetchFromLocalDataStore()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,15 +79,15 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         NotificationCenter.default.removeObserver(self)
     }
 
-    // MARK: - Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch From Local DataStore
 
     @IBOutlet var exampleLabel: UILabel! = UILabel()
-    func setupFetchFromDataStore() {
-        let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
-        interactor?.fetchFromDataStore(with: request)
+    func setupFetchFromLocalDataStore() {
+        let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
+        interactor?.fetchFromLocalDataStore(with: request)
     }
 
-    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
+    func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
         exampleLabel.text = viewModel.exampleVariable
     }
 

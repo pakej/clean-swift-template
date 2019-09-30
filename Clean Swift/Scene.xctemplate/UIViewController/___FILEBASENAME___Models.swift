@@ -12,7 +12,7 @@ enum ___VARIABLE_sceneName___Models {
 
     // MARK: - Use Cases
 
-    enum FetchFromDataStore {
+    enum FetchFromLocalDataStore {
         struct Request {
         }
 

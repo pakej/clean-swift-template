@@ -39,16 +39,16 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
 
         // MARK: - Use Cases
 
-        describe("fetch from data store") {
+        describe("fetch from local data store") {
             it("should ask presenter to format", closure: {
                 // given
-                let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+                let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
 
                 // when
-                sut.fetchFromDataStore(with: request)
+                sut.fetchFromLocalDataStore(with: request)
 
                 // then
-                expect(presentationLogicSpy.presentFetchFromDataStoreCalled).to(beTrue())
+                expect(presentationLogicSpy.presentFetchFromLocalDataStoreCalled).to(beTrue())
             })
         }
 
@@ -151,11 +151,11 @@ extension ___VARIABLE_sceneName___InteractorSpec {
 
         // MARK: Spied Methods
 
-        var presentFetchFromDataStoreCalled = false
-        var fetchFromDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response!
-        func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-            presentFetchFromDataStoreCalled = true
-            fetchFromDataStoreResponse = response
+        var presentFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response!
+        func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
+            presentFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreResponse = response
         }
 
         var presentTrackAnalyticsCalled = false

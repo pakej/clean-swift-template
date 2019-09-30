@@ -39,11 +39,11 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
         // MARK: Spied Methods
 
-        var presentFetchFromDataStoreCalled = false
-        var fetchFromDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response!
-        func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-            presentFetchFromDataStoreCalled = true
-            fetchFromDataStoreResponse = response
+        var presentFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response!
+        func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
+            presentFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreResponse = response
         }
 
         var presentTrackAnalyticsCalled = false
@@ -86,17 +86,17 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testFetchFromDataStoreShouldAskPresenterToFormat() {
+    func testFetchFromLocalDataStoreShouldAskPresenterToFormat() {
         // given
         let spy = ___VARIABLE_sceneName___PresentationLogicSpy()
         sut.presenter = spy
-        let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+        let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
 
         // when
-        sut.fetchFromDataStore(with: request)
+        sut.fetchFromLocalDataStore(with: request)
 
         // then
-        XCTAssertTrue(spy.presentFetchFromDataStoreCalled, "fetchFromDataStore(with:) should ask the presenter to format the result")
+        XCTAssertTrue(spy.presentFetchFromLocalDataStoreCalled, "fetchFromLocalDataStore(with:) should ask the presenter to format the result")
     }
 
     func testTrackAnalyticsShouldAskWorkerToTrackAnalytics() {

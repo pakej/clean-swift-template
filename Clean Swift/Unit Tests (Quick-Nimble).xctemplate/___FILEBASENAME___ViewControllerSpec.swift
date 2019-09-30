@@ -43,14 +43,14 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
         // MARK: - View Lifecycle
 
         describe("view did load") {
-            it("should fetch from datastore", closure: {
+            it("should fetch from local datastore", closure: {
                 // given
 
                 // when
                 loadView()
 
                 // then
-                expect(businessLogicSpy.fetchFromDataStoreCalled).to(beTrue())
+                expect(businessLogicSpy.fetchFromLocalDataStoreCalled).to(beTrue())
             })
         }
 
@@ -76,10 +76,10 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 // given
                 loadView()
                 let exampleVariable = "Example string."
-                let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: exampleVariable)
+                let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleVariable: exampleVariable)
 
                 // when
-                sut.displayFetchFromDataStore(with: viewModel)
+                sut.displayFetchFromLocalDataStore(with: viewModel)
 
                 // then
                 expect(sut.exampleLabel.text).to(equal(exampleVariable))
@@ -177,11 +177,11 @@ extension ___VARIABLE_sceneName___ViewControllerSpec {
 
         // MARK: Spied Methods
 
-        var fetchFromDataStoreCalled = false
-        var fetchFromDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request!
-        func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
-            fetchFromDataStoreCalled = true
-            fetchFromDataStoreRequest = request
+        var fetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request!
+        func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request) {
+            fetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreRequest = request
         }
 
         var trackAnalyticsCalled = false

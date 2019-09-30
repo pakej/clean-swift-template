@@ -39,11 +39,11 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
         // MARK: Spied Methods
 
-        var displayFetchFromDataStoreCalled = false
-        var fetchFromDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel!
-        func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
-            displayFetchFromDataStoreCalled = true
-            fetchFromDataStoreViewModel = viewModel
+        var displayFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel!
+        func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
+            displayFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreViewModel = viewModel
         }
 
         var displayTrackAnalyticsCalled = false
@@ -63,17 +63,17 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testPresentFetchFromDataStoreShouldAskTheViewControllerToDisplay() {
+    func testPresentFetchFromLocalDataStoreShouldAskTheViewControllerToDisplay() {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response()
+        let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
 
         // when
-        sut.presentFetchFromDataStore(with: response)
+        sut.presentFetchFromLocalDataStore(with: response)
 
         // then
-        XCTAssertTrue(spy.displayFetchFromDataStoreCalled, "presentFetchFromDataStore(with:) should ask the view controller to display the result")
+        XCTAssertTrue(spy.displayFetchFromLocalDataStoreCalled, "presentFetchFromLocalDataStore(with:) should ask the view controller to display the result")
     }
 
     func testPresentTrackAnalyticsShouldAskTheViewControllerToDisplay() {
