@@ -10,6 +10,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
     func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel)
+    func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel)
     func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)
     func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel)
 }
@@ -81,15 +82,27 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     // MARK: - Use Case - Fetch From Local DataStore
 
-    @IBOutlet var exampleLabel: UILabel! = UILabel()
+    @IBOutlet var exampleLocalLabel: UILabel! = UILabel()
     func setupFetchFromLocalDataStore() {
         let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
         interactor?.fetchFromLocalDataStore(with: request)
     }
 
     func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
-        exampleLabel.text = viewModel.exampleVariable
+        exampleLocalLabel.text = viewModel.exampleVariable
     }
+
+    // MARK: - Use Case - Fetch From Remote DataStore
+
+    @IBOutlet var exampleRemoteLabel: UILabel! = UILabel()
+    func setupFetchFromRemoteDataStore() {
+        let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+        interactor?.fetchFromRemoteDataStore(with: request)
+    }
+
+    func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+        exampleRemoteLabel.text = viewModel.exampleVariable
+    }    
 
     // MARK: - Use Case - Track Analytics
 
@@ -109,7 +122,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(_ sender: Any) {
-        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLabel.text)
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLocalLabel.text)
         interactor?.perform___VARIABLE_sceneName___(with: request)
     }
 
@@ -119,10 +132,10 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         if let error = viewModel.error {
             switch error.type {
                 case .emptyExampleVariable:
-                    exampleLabel.text = error.message
+                    exampleLocalLabel.text = error.message
 
                 case .apiError:
-                    exampleLabel.text = error.message
+                    exampleLocalLabel.text = error.message
             }
             return
         }

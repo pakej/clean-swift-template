@@ -10,6 +10,7 @@ import UIKit
 
 protocol ___VARIABLE_sceneName___BusinessLogic {
     func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request)
+    func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request)
     func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request)
     func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request)
 }
@@ -33,6 +34,14 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response(exampleVariable: exampleVariable)
         presenter?.presentFetchFromLocalDataStore(with: response)
     }
+
+    // MARK: - Use Case - Fetch From Remote DataStore
+
+    func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
+        self.exampleVariable = ""
+        let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response(exampleVariable: exampleVariable)
+        presenter?.presentFetchFromRemoteDataStore(with: response)
+    }    
 
     // MARK: - Use Case - Track Analytics
 

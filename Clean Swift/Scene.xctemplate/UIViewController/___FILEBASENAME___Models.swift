@@ -25,6 +25,19 @@ enum ___VARIABLE_sceneName___Models {
         }
     }
 
+    enum FetchFromRemoteDataStore {
+        struct Request {
+        }
+
+        struct Response {
+            var exampleVariable: String?
+        }
+
+        struct ViewModel {
+            var exampleVariable: String?
+        }
+    }    
+
     enum TrackAnalytics {
         struct Request {
             var event: AnalyticsEvents
