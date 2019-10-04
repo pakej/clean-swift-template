@@ -60,7 +60,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
                 // then
                 expect(displayLogicSpy.displayFetchFromRemoteDataStoreCalled).to(beTrue())
             })
-        }        
+        }
 
         describe("present track analytics") {
             it("should ask view controller to display", closure: {
@@ -138,7 +138,7 @@ extension ___VARIABLE_sceneName___PresenterSpec {
         func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
             displayFetchFromRemoteDataStoreCalled = true
             fetchFromRemoteDataStoreViewModel = viewModel
-        }        
+        }
 
         var displayTrackAnalyticsCalled = false
         var trackAnalyticsViewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel!

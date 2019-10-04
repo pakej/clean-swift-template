@@ -51,7 +51,7 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
             presentFetchFromRemoteDataStoreCalled = true
             fetchFromRemoteDataStoreResponse = response
-        }        
+        }
 
         var presentTrackAnalyticsCalled = false
         var trackAnalyticsResponse: ___VARIABLE_sceneName___Models.TrackAnalytics.Response!
@@ -73,10 +73,13 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
         // MARK: Spied Methods
 
         var fetchFromRemoteDataStoreCalled = false
-        override func fetchFromRemoteDataStore() -> String {
-            fetchFromRemoteDataStoreCalled = true
-            return super.fetchFromRemoteDataStore()
-        }        
+        override func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
+            super.fetchFromRemoteDataStore(completion: {
+                [weak self] code in
+                self?.fetchFromRemoteDataStoreCalled = true
+                completion(code)
+            })
+        }
 
         var validateExampleVariableCalled = false
         override func validate(exampleVariable: String?) {

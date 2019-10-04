@@ -107,7 +107,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
         exampleRemoteLabel.text = viewModel.exampleVariable
-    }    
+    }
 
     // MARK: - Use Case - Track Analytics
 

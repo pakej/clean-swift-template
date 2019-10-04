@@ -32,9 +32,20 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
     // MARK: - Use Case - Fetch From Remote DataStore
 
     func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: response.exampleVariable)
+        let code = response.exampleVariable
+        var exampleText: String
+
+        switch code {
+        case "0000":
+            exampleText = "Success!"
+
+        default:
+            exampleText = "Oops."
+        }
+
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleText)
         viewController?.displayFetchFromRemoteDataStore(with: viewModel)
-    }    
+    }
 
     // MARK: - Use Case - Track Analytics
 

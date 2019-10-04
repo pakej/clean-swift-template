@@ -19,10 +19,11 @@ class ___VARIABLE_sceneName___Worker {
 
     // MARK: Fetch From Remote DataStore
 
-    func fetchFromRemoteDataStore() -> String {
+    func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
         // fetch something from backend,
         // and return the values here
-        return ""
+        let code = "0000"
+        completion(code)
     }
 
     // MARK: Validation

@@ -37,10 +37,12 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
     // MARK: - Use Case - Fetch From Remote DataStore
 
     func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
-        let exampleVariable = worker?.fetchFromRemoteDataStore()
-        let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response(exampleVariable: exampleVariable)
-        presenter?.presentFetchFromRemoteDataStore(with: response)
-    }    
+        worker?.fetchFromRemoteDataStore(completion: {
+            [weak self] code in
+            let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response(exampleVariable: code)
+            self?.presenter?.presentFetchFromRemoteDataStore(with: response)
+        })
+    }
 
     // MARK: - Use Case - Track Analytics
 

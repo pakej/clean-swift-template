@@ -63,14 +63,14 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
 
             it("should ask worker to fetch from remote datastore", closure: {
                 // then
-                expect(workerSpy.fetchFromRemoteDataStoreCalled).to(beTrue())
+                expect(workerSpy.fetchFromRemoteDataStoreCalled).toEventually(beTrue())
             })
 
             it("should ask presenter to format", closure: {
                 // then
-                expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).to(beTrue())
+                expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).toEventually(beTrue())
             })
-        }        
+        }
 
         describe("track analytics") {
             beforeEach {
@@ -183,7 +183,7 @@ extension ___VARIABLE_sceneName___InteractorSpec {
         func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
             presentFetchFromRemoteDataStoreCalled = true
             fetchFromRemoteDataStoreResponse = response
-        }        
+        }
 
         var presentTrackAnalyticsCalled = false
         var trackAnalyticsResponse: ___VARIABLE_sceneName___Models.TrackAnalytics.Response!
@@ -205,9 +205,12 @@ extension ___VARIABLE_sceneName___InteractorSpec {
         // MARK: Spied Methods
 
         var fetchFromRemoteDataStoreCalled = false
-        override func fetchFromRemoteDataStore() -> String {
-            fetchFromRemoteDataStoreCalled = true
-            return super.fetchFromRemoteDataStore()
+        override func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
+            super.fetchFromRemoteDataStore(completion: {
+                [weak self] code in
+                self?.fetchFromRemoteDataStoreCalled = true
+                completion(code)
+            })
         }
 
         var validateExampleVariableCalled = false

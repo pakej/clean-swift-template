@@ -57,7 +57,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         var fetchFromRemoteDataStoreCalled = false
         func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
             fetchFromRemoteDataStoreCalled = true
-        }        
+        }
 
         var trackAnalyticsCalled = false
         func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
@@ -92,7 +92,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.fetchFromLocalDataStoreCalled, "viewDidLoad() should ask the interactor to fetch from local DataStore")
-    }   
+    }
 
     func testShouldDisplayDataFetchedFromLocalDataStore() {
         // given
@@ -117,7 +117,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
         // then
         XCTAssertTrue(spy.fetchFromRemoteDataStoreCalled, "viewWillAppear(_:) should ask the interactor to fetch from remote DataStore")
-    }   
+    }
 
     func testShouldDisplayDataFetchedFromRemoteDataStore() {
         // given
@@ -130,7 +130,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
         // then
         XCTAssertEqual(sut.exampleRemoteLabel.text, exampleVariable, "displayFetchFromRemoteDataStore(with:) should display the correct example label text")
-    }    
+    }
 
     func testShouldTrackAnalyticsWhenViewDidAppear() {
         // given

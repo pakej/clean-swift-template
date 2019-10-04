@@ -34,13 +34,17 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
         describe("fetch from remote datastore") {
             it("should return a string", closure: {
                 // given
-                let expectedOutput = ""
+                var actualOutput = ""
+                let expectedOutput = "0000"
 
                 // when
-                let actualOutput = sut.fetchFromRemoteDataStore()
+                sut.fetchFromRemoteDataStore(completion: {
+                    code in
+                    actualOutput = code
+                })
 
                 // then
-                expect(actualOutput).to(equal(expectedOutput))
+                expect(actualOutput).toEventually(equal(expectedOutput))
             })
         }
 

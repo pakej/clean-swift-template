@@ -35,7 +35,7 @@ enum ___VARIABLE_sceneName___Models {
         struct ViewModel {
             var exampleVariable: String?
         }
-    }    
+    }
 
     enum TrackAnalytics {
         struct Request {
