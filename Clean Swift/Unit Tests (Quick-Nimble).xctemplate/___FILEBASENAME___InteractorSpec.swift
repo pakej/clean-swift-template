@@ -39,16 +39,36 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
 
         // MARK: - Use Cases
 
-        describe("fetch from data store") {
+        describe("fetch from local data store") {
             it("should ask presenter to format", closure: {
                 // given
-                let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
+                let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
 
                 // when
-                sut.fetchFromDataStore(with: request)
+                sut.fetchFromLocalDataStore(with: request)
 
                 // then
-                expect(presentationLogicSpy.presentFetchFromDataStoreCalled).to(beTrue())
+                expect(presentationLogicSpy.presentFetchFromLocalDataStoreCalled).to(beTrue())
+            })
+        }
+
+        describe("fetch from remote data store") {
+            beforeEach {
+                // given
+                let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+
+                // when
+                sut.fetchFromRemoteDataStore(with: request)
+            }
+
+            it("should ask worker to fetch from remote datastore", closure: {
+                // then
+                expect(workerSpy.fetchFromRemoteDataStoreCalled).toEventually(beTrue())
+            })
+
+            it("should ask presenter to format", closure: {
+                // then
+                expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).toEventually(beTrue())
             })
         }
 
@@ -151,11 +171,18 @@ extension ___VARIABLE_sceneName___InteractorSpec {
 
         // MARK: Spied Methods
 
-        var presentFetchFromDataStoreCalled = false
-        var fetchFromDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response!
-        func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-            presentFetchFromDataStoreCalled = true
-            fetchFromDataStoreResponse = response
+        var presentFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response!
+        func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
+            presentFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreResponse = response
+        }
+
+        var presentFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreResponse: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response!
+        func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
+            presentFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreResponse = response
         }
 
         var presentTrackAnalyticsCalled = false
@@ -176,6 +203,15 @@ extension ___VARIABLE_sceneName___InteractorSpec {
     class ___VARIABLE_sceneName___WorkerSpy: ___VARIABLE_sceneName___Worker {
 
         // MARK: Spied Methods
+
+        var fetchFromRemoteDataStoreCalled = false
+        override func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
+            super.fetchFromRemoteDataStore(completion: {
+                [weak self] code in
+                self?.fetchFromRemoteDataStoreCalled = true
+                completion(code)
+            })
+        }
 
         var validateExampleVariableCalled = false
         override func validate(exampleVariable: String?) {

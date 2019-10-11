@@ -43,14 +43,27 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
         // MARK: - View Lifecycle
 
         describe("view did load") {
-            it("should fetch from datastore", closure: {
+            it("should fetch from local datastore", closure: {
                 // given
 
                 // when
                 loadView()
 
                 // then
-                expect(businessLogicSpy.fetchFromDataStoreCalled).to(beTrue())
+                expect(businessLogicSpy.fetchFromLocalDataStoreCalled).to(beTrue())
+            })
+        }
+
+        describe("view will appear") {
+            it("should fetch from remote datastore", closure: {
+                // given
+                loadView()
+
+                // when
+                sut.viewWillAppear(true)
+
+                // then
+                expect(businessLogicSpy.fetchFromRemoteDataStoreCalled).to(beTrue())
             })
         }
 
@@ -71,18 +84,33 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
 
         // MARK: - Display Logic
 
-        describe("display fetch from datastore") {
-            it("should display fetch from datastore", closure: {
+        describe("display fetch from local datastore") {
+            it("should display fetch from local datastore", closure: {
+                // given
+                loadView()
+                let translation = "Example string."
+                let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
+
+                // when
+                sut.displayFetchFromLocalDataStore(with: viewModel)
+
+                // then
+                expect(sut.exampleLocalLabel.text).to(equal(translation))
+            })
+        }
+
+        describe("display fetch from remote datastore") {
+            it("should display fetch from remote datastore", closure: {
                 // given
                 loadView()
                 let exampleVariable = "Example string."
-                let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: exampleVariable)
+                let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleVariable)
 
                 // when
-                sut.displayFetchFromDataStore(with: viewModel)
+                sut.displayFetchFromRemoteDataStore(with: viewModel)
 
                 // then
-                expect(sut.exampleLabel.text).to(equal(exampleVariable))
+                expect(sut.exampleRemoteLabel.text).to(equal(exampleVariable))
             })
         }
 
@@ -117,7 +145,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
 
                 it("should show error as label", closure: {
                     // then
-                    expect(sut.exampleLabel.text).to(equal(error.message))
+                    expect(sut.exampleLocalLabel.text).to(equal(error.message))
                 })
 
                 it("should not route to next", closure: {
@@ -177,11 +205,18 @@ extension ___VARIABLE_sceneName___ViewControllerSpec {
 
         // MARK: Spied Methods
 
-        var fetchFromDataStoreCalled = false
-        var fetchFromDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request!
-        func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
-            fetchFromDataStoreCalled = true
-            fetchFromDataStoreRequest = request
+        var fetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request!
+        func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request) {
+            fetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreRequest = request
+        }
+
+        var fetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreRequest: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request!
+        func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
+            fetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreRequest = request
         }
 
         var trackAnalyticsCalled = false

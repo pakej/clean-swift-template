@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___DisplayLogic: class {
-    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel)
+    func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel)
+    func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel)
     func displayTrackAnalytics(with viewModel: ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel)
     func displayPerform___VARIABLE_sceneName___(with viewModel: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel)
 }
@@ -53,7 +54,12 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFetchFromDataStore()
+        setupFetchFromLocalDataStore()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupFetchFromRemoteDataStore()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -79,16 +85,28 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         NotificationCenter.default.removeObserver(self)
     }
 
-    // MARK: - Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch From Local DataStore
 
-    @IBOutlet var exampleLabel: UILabel! = UILabel()
-    func setupFetchFromDataStore() {
-        let request = ___VARIABLE_sceneName___Models.FetchFromDataStore.Request()
-        interactor?.fetchFromDataStore(with: request)
+    @IBOutlet var exampleLocalLabel: UILabel! = UILabel()
+    func setupFetchFromLocalDataStore() {
+        let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
+        interactor?.fetchFromLocalDataStore(with: request)
     }
 
-    func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
-        exampleLabel.text = viewModel.exampleVariable
+    func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
+        exampleLocalLabel.text = viewModel.exampleTranslation
+    }
+
+    // MARK: - Use Case - Fetch From Remote DataStore
+
+    @IBOutlet var exampleRemoteLabel: UILabel! = UILabel()
+    func setupFetchFromRemoteDataStore() {
+        let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+        interactor?.fetchFromRemoteDataStore(with: request)
+    }
+
+    func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+        exampleRemoteLabel.text = viewModel.exampleVariable
     }
 
     // MARK: - Use Case - Track Analytics
@@ -109,7 +127,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(_ sender: Any) {
-        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLabel.text)
+        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLocalLabel.text)
         interactor?.perform___VARIABLE_sceneName___(with: request)
     }
 
@@ -118,11 +136,11 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
         // based on error type
         if let error = viewModel.error {
             switch error.type {
-                case .emptyExampleVariable:
-                    exampleLabel.text = error.message
+            case .emptyExampleVariable:
+                exampleLocalLabel.text = error.message
 
-                case .apiError:
-                    exampleLabel.text = error.message
+            case .apiError:
+                exampleLocalLabel.text = error.message
             }
             return
         }

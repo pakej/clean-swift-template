@@ -36,16 +36,29 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
 
         // MARK: - Use Cases
 
-        describe("present fetch from data store") {
+        describe("present fetch from local data store") {
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response()
+                let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
 
                 // when
-                sut.presentFetchFromDataStore(with: response)
+                sut.presentFetchFromLocalDataStore(with: response)
 
                 // then
-                expect(displayLogicSpy.displayFetchFromDataStoreCalled).to(beTrue())
+                expect(displayLogicSpy.displayFetchFromLocalDataStoreCalled).to(beTrue())
+            })
+        }
+
+        describe("present fetch from remote data store") {
+            it("should ask view controller to display", closure: {
+                // given
+                let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+
+                // when
+                sut.presentFetchFromRemoteDataStore(with: response)
+
+                // then
+                expect(displayLogicSpy.displayFetchFromRemoteDataStoreCalled).to(beTrue())
             })
         }
 
@@ -113,11 +126,18 @@ extension ___VARIABLE_sceneName___PresenterSpec {
 
         // MARK: Spied Methods
 
-        var displayFetchFromDataStoreCalled = false
-        var fetchFromDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel!
-        func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
-            displayFetchFromDataStoreCalled = true
-            fetchFromDataStoreViewModel = viewModel
+        var displayFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel!
+        func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
+            displayFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreViewModel = viewModel
+        }
+
+        var displayFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel!
+        func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+            displayFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreViewModel = viewModel
         }
 
         var displayTrackAnalyticsCalled = false

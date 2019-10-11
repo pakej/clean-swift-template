@@ -37,6 +37,24 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testFetchFromRemoteDataStoreShouldReturnAString() {
+        // given
+        var actualOutput = ""
+        let expectedOutput = "0000"
+
+        // when
+        let expect = expectation(description: "Wait for fetchFromRemoteDataStore(completion:) to return")
+        sut.fetchFromRemoteDataStore {
+            code in
+            actualOutput = code
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+
+        // then
+        XCTAssertEqual(actualOutput, expectedOutput, "fetchFromRemoteDataStore(completion:) should return a string")
+    }
+
     func testValidateExampleVariableShouldCreateEmptyExampleVariableErrorIfExampleVariableIsNil() {
         // given
         let exampleVariable: String? = nil

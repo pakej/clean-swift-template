@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ___VARIABLE_sceneName___PresentationLogic {
-    func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response)
+    func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response)
+    func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response)
     func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response)
     func presentPerform___VARIABLE_sceneName___(with response: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response)
 }
@@ -20,11 +21,30 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
 
     weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
 
-    // MARK: - Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch From Local DataStore
 
-    func presentFetchFromDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromDataStore.Response) {
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel(exampleVariable: response.exampleVariable)
-        viewController?.displayFetchFromDataStore(with: viewModel)
+    func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
+        let translation = "Some localised text."
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
+        viewController?.displayFetchFromLocalDataStore(with: viewModel)
+    }
+
+    // MARK: - Use Case - Fetch From Remote DataStore
+
+    func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
+        let code = response.exampleVariable
+        var exampleText: String
+
+        switch code {
+        case "0000":
+            exampleText = "Success!"
+
+        default:
+            exampleText = "Oops."
+        }
+
+        let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleText)
+        viewController?.displayFetchFromRemoteDataStore(with: viewModel)
     }
 
     // MARK: - Use Case - Track Analytics
@@ -41,11 +61,11 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
 
         if let error = responseError {
             switch error.type {
-                case .emptyExampleVariable:
-                    responseError?.message = "Localised empty/nil error message."
+            case .emptyExampleVariable:
+                responseError?.message = "Localised empty/nil error message."
 
-                case .apiError:
-                    responseError?.message = "Localised api error message."
+            case .apiError:
+                responseError?.message = "Localised api error message."
             }
         }
 
