@@ -6,9 +6,12 @@ This is a CleanSwift template modified from the original, to accomodate common p
 
 1. All Files
     - All file templates are updated so that upon scene generation, the app still works without throwing errors.
-    - Pre-built with 3 common use cases:
-      1. Upon entering a screen - `fetchFromDataStore(with:)`
-          - There's almost always data to be displayed on the screen.
+    - Pre-built with 4 common use cases:
+      1. Upon entering a screen - `fetchFromLocalDataStore(with:)`
+          - There's almost always local data to be displayed on the screen.
+      1. Upon entering a screen - `fetchFromRemoteDataStore(with:)`
+          - Sometimes a data need to be fetched from an external source.
+          - This use case decouples from local data fetching use case and allows it to be reused if needed (ie. Pull-To-Refresh).
       1. Tracking analytics - `trackAnalytics(with:)`
           - Sometimes a triggered UI element needs to be tracked for app improvements.
           - This use case made it easier.
