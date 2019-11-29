@@ -1,9 +1,9 @@
 //
 //  ___FILENAME___
-//  ___PROJECTNAME___
+//  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Quick
@@ -12,39 +12,53 @@ import Nimble
 
 class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
     override func spec() {
-        
+
         // MARK: - Subject Under Test (SUT)
-        
+
         var sut: ___VARIABLE_sceneName___Presenter!
-        
+
         // MARK: - Test Doubles
-        
+
         var displayLogicSpy: ___VARIABLE_sceneName___DisplayLogicSpy!
-        
+
         // MARK: - Tests
-        
+
         beforeEach {
             setupInitialUserState()
             setupPresenter()
             setupDisplayLogic()
         }
-        
+
         afterEach {
             sut = nil
+            displayLogicSpy = nil
         }
-        
-        // MARK: Use Cases
 
-        describe("present fetch from data store") {
+        // MARK: - Use Cases
+
+        describe("present fetch from local data store") {
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response()
+                let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
 
                 // when
-                sut.presentFetchFromDataStore(with: response)
+                sut.presentFetchFromLocalDataStore(with: response)
 
                 // then
-                expect(displayLogicSpy.displayFetchFromDataStoreCalled).to(beTrue())
+                expect(displayLogicSpy.displayFetchFromLocalDataStoreCalled).to(beTrue())
+            })
+        }
+
+        describe("present fetch from remote data store") {
+            it("should ask view controller to display", closure: {
+                // given
+                let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+
+                // when
+                sut.presentFetchFromRemoteDataStore(with: response)
+
+                // then
+                expect(displayLogicSpy.displayFetchFromRemoteDataStoreCalled).to(beTrue())
             })
         }
 
@@ -87,17 +101,17 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
                 expect(displayLogicSpy.displayPerform___VARIABLE_sceneName___Called).to(beTrue())
             })
         }
-        
+
         // MARK: - Test Helpers
-        
+
         func setupInitialUserState() {
             // some initial user state setup
         }
-        
+
         func setupPresenter() {
             sut = ___VARIABLE_sceneName___Presenter()
         }
-        
+
         func setupDisplayLogic() {
             displayLogicSpy = ___VARIABLE_sceneName___DisplayLogicSpy()
             sut.viewController = displayLogicSpy
@@ -112,11 +126,18 @@ extension ___VARIABLE_sceneName___PresenterSpec {
 
         // MARK: Spied Methods
 
-        var displayFetchFromDataStoreCalled = false
-        var fetchFromDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel!
-        func displayFetchFromDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromDataStore.ViewModel) {
-            displayFetchFromDataStoreCalled = true
-            fetchFromDataStoreViewModel = viewModel
+        var displayFetchFromLocalDataStoreCalled = false
+        var fetchFromLocalDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel!
+        func displayFetchFromLocalDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel) {
+            displayFetchFromLocalDataStoreCalled = true
+            fetchFromLocalDataStoreViewModel = viewModel
+        }
+
+        var displayFetchFromRemoteDataStoreCalled = false
+        var fetchFromRemoteDataStoreViewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel!
+        func displayFetchFromRemoteDataStore(with viewModel: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel) {
+            displayFetchFromRemoteDataStoreCalled = true
+            fetchFromRemoteDataStoreViewModel = viewModel
         }
 
         var displayTrackAnalyticsCalled = false

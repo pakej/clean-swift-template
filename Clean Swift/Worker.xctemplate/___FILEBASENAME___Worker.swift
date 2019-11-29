@@ -3,7 +3,7 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -15,16 +15,39 @@ class ___VARIABLE_sceneName___Worker {
     typealias ErrorType = ___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType
     var error: ___VARIABLE_sceneName___Models.Error<ErrorType>?
 
-    // MARK: - Use Cases
+    // MARK: - Methods
+
+    // MARK: Fetch From Remote DataStore
+
+    func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
+        // fetch something from backend,
+        // and return the values here
+        let code = "0000"
+        completion(code)
+    }
+
+    // MARK: Validation
 
     func validate(exampleVariable: String?) {
         if exampleVariable?.isEmpty == false {
             error = nil
         }
         else {
-            error = ___VARIABLE_sceneName___Models.Error<ErrorType>.init(type: .emptyExampleVariable)
+            error = ___VARIABLE_sceneName___Models.Error<ErrorType>(type: .emptyExampleVariable)
         }
     }
+
+    // MARK: Track Analytics
+
+    func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
+        switch event {
+        case .screenView:
+            // call analytics library/wrapper here to track analytics
+            break
+        }
+    }
+
+    // MARK: Perform ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<ErrorType>?) -> Void) {
         let isSuccessful = true

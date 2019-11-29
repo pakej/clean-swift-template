@@ -3,13 +3,14 @@
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
 protocol ___VARIABLE_sceneName___BusinessLogic {
-    func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request)
+    func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request)
+    func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request)
     func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request)
     func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request)
 }
@@ -19,28 +20,40 @@ protocol ___VARIABLE_sceneName___DataStore {
 }
 
 class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic, ___VARIABLE_sceneName___DataStore {
+
+    // MARK: - Properties
+
     var worker: ___VARIABLE_sceneName___Worker? = ___VARIABLE_sceneName___Worker()
     var presenter: ___VARIABLE_sceneName___PresentationLogic?
     var exampleVariable: String?
 
-    // MARK: Use Case - Fetch Data From DataStore
+    // MARK: - Use Case - Fetch From Local DataStore
 
-    func fetchFromDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromDataStore.Request) {
-        self.exampleVariable = ""
-        let response = ___VARIABLE_sceneName___Models.FetchFromDataStore.Response(exampleVariable: exampleVariable)
-        presenter?.presentFetchFromDataStore(with: response)
+    func fetchFromLocalDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request) {
+        let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
+        presenter?.presentFetchFromLocalDataStore(with: response)
     }
 
-    // MARK: Use Case - Track Analytics
+    // MARK: - Use Case - Fetch From Remote DataStore
+
+    func fetchFromRemoteDataStore(with request: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request) {
+        worker?.fetchFromRemoteDataStore(completion: {
+            [weak self] code in
+            let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response(exampleVariable: code)
+            self?.presenter?.presentFetchFromRemoteDataStore(with: response)
+        })
+    }
+
+    // MARK: - Use Case - Track Analytics
 
     func trackAnalytics(with request: ___VARIABLE_sceneName___Models.TrackAnalytics.Request) {
-        // call analytics library/wrapper here to track analytics
+        worker?.trackAnalytics(event: request.event)
 
         let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
         presenter?.presentTrackAnalytics(with: response)
     }
 
-    // MARK: Use Case - ___VARIABLE_sceneName___
+    // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(with request: ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request) {
         worker?.validate(exampleVariable: request.exampleVariable)
@@ -52,10 +65,12 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
         }
 
         worker?.perform___VARIABLE_sceneName___(completion: {
-            [weak self] (isSuccessful, error) in
+            [weak self, request] isSuccessful, error in
 
             if isSuccessful {
                 // do something on success
+                let goodExample = request.exampleVariable ?? ""
+                self?.exampleVariable = goodExample
             }
 
             let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response(error: error)

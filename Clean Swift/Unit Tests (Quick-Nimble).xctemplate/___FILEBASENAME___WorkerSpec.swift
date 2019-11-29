@@ -1,9 +1,9 @@
 //
 //  ___FILENAME___
-//  ___PROJECTNAME___
+//  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright (c) ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Quick
@@ -12,25 +12,41 @@ import Nimble
 
 class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
     override func spec() {
-        
+
         // MARK: - Subject Under Test (SUT)
-        
+
         var sut: ___VARIABLE_sceneName___Worker!
-        
+
         // MARK: - Test Doubles
-        
-        
+
         // MARK: - Tests
-        
+
         beforeEach {
             setupWorker()
         }
-        
+
         afterEach {
             sut = nil
         }
-        
-        // MARK: Use Cases
+
+        // MARK: - Methods
+
+        describe("fetch from remote datastore") {
+            it("should return a string", closure: {
+                // given
+                var actualOutput = ""
+                let expectedOutput = "0000"
+
+                // when
+                sut.fetchFromRemoteDataStore(completion: {
+                    code in
+                    actualOutput = code
+                })
+
+                // then
+                expect(actualOutput).toEventually(equal(expectedOutput))
+            })
+        }
 
         describe("validate example variable") {
             context("example variable is nil", closure: {
@@ -65,7 +81,7 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                 it("should not create error", closure: {
                     // given
                     let exampleVariable = "Example string."
-                    
+
                     // when
                     sut.validate(exampleVariable: exampleVariable)
 
@@ -75,11 +91,26 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
             })
         }
 
+        describe("track analytics") {
+            context("when event is screen view", closure: {
+                it("should track analytics", closure: {
+                    // given
+                    let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
+
+                    // when
+                    sut.trackAnalytics(event: event)
+
+                    // then
+                    // assert something here based on use case
+                })
+            })
+        }
+
         describe("perform ___VARIABLE_sceneName___") {
             it("should always return true and without error response", closure: {
                 // given
                 var response: (isSuccessful: Bool, error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>?)!
-                
+
                 // when
                 sut.perform___VARIABLE_sceneName___(completion: { (isSuccessful, error) in
                     response = (isSuccessful, error)
@@ -90,9 +121,9 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                 expect(response.error).toEventually(beNil())
             })
         }
-        
+
         // MARK: - Test Helpers
-        
+
         func setupWorker() {
             sut = ___VARIABLE_sceneName___Worker()
         }
