@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file
 
+## 5.3.0
+
+- Added screen view and primary button to analytics events
+- Moved track analytics to worker
+- Replace (c) with © to follow latest Apple templates
+- Added missing test cases in Interactor XCTests
+- Remove whitespaces
+- Split fetchFromDataStore use case into local and remote
+- Amend examples to make it apparent for local and remote data store fetching
+- Update unit tests to support local and remote data store fetching
+
 ## 5.2.1
 
 - Spied use case models for checking passed values
