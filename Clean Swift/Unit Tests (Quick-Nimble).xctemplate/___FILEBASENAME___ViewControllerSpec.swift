@@ -15,6 +15,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
 
         // MARK: - Subject Under Test (SUT)
 
+        typealias Models = ___VARIABLE_sceneName___Models
         var sut: ___VARIABLE_sceneName___ViewController!
         var window: UIWindow!
 
@@ -89,7 +90,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 // given
                 loadView()
                 let translation = "Example string."
-                let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
+                let viewModel = Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
 
                 // when
                 sut.displayFetchFromLocalDataStore(with: viewModel)
@@ -104,7 +105,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 // given
                 loadView()
                 let exampleVariable = "Example string."
-                let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleVariable)
+                let viewModel = Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleVariable)
 
                 // when
                 sut.displayFetchFromRemoteDataStore(with: viewModel)
@@ -118,7 +119,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
             it("should display track analytics", closure: {
                 // given
                 loadView()
-                let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
+                let viewModel = Models.TrackAnalytics.ViewModel()
 
                 // when
                 sut.displayTrackAnalytics(with: viewModel)
@@ -130,14 +131,14 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
 
         describe("display perform ___VARIABLE_sceneName___") {
             context("when there is an error", closure: {
-                var error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>!
+                var error: Models.___VARIABLE_sceneName___Error!
 
                 beforeEach {
                     // given
                     loadView()
-                    error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
+                    error = Models.___VARIABLE_sceneName___Error(type: .emptyExampleVariable)
                     error.message = "Example error"
-                    let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: error)
+                    let viewModel = Models.Perform___VARIABLE_sceneName___.ViewModel(error: error)
 
                     // when
                     sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
@@ -158,7 +159,7 @@ class ___VARIABLE_sceneName___ViewControllerSpec: QuickSpec {
                 it("should route to next", closure: {
                     // given
                     loadView()
-                    let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: nil)
+                    let viewModel = Models.Perform___VARIABLE_sceneName___.ViewModel(error: nil)
 
                     // when
                     sut.displayPerform___VARIABLE_sceneName___(with: viewModel)
