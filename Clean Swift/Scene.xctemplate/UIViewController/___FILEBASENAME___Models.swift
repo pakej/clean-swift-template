@@ -63,11 +63,9 @@ enum ___VARIABLE_sceneName___Models {
         }
     }
 
-    // MARK: - View Models
+    // MARK: - Types
 
-    enum AnalyticsEvents {
-        case screenView
-    }
+    typealias AnalyticsEvents = <#Path.To.Analytics.Constants#>
 
     enum ___VARIABLE_sceneName___ErrorType {
         case emptyExampleVariable, apiError
