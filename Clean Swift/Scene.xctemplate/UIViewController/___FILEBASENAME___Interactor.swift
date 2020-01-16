@@ -23,6 +23,7 @@ class ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___BusinessLogic,
 
     // MARK: - Properties
 
+    typealias Models = ___VARIABLE_sceneName___Models
     var worker: ___VARIABLE_sceneName___Worker? = ___VARIABLE_sceneName___Worker()
     var presenter: ___VARIABLE_sceneName___PresentationLogic?
     var exampleVariable: String?

@@ -19,6 +19,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     // MARK: - Properties
 
+    typealias Models = ___VARIABLE_sceneName___Models
     var router: (NSObjectProtocol & ___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)?
     var interactor: ___VARIABLE_sceneName___BusinessLogic?
 
@@ -89,7 +90,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     @IBOutlet var exampleLocalLabel: UILabel! = UILabel()
     func setupFetchFromLocalDataStore() {
-        let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
+        let request = Models.FetchFromLocalDataStore.Request()
         interactor?.fetchFromLocalDataStore(with: request)
     }
 
@@ -101,7 +102,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     @IBOutlet var exampleRemoteLabel: UILabel! = UILabel()
     func setupFetchFromRemoteDataStore() {
-        let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+        let request = Models.FetchFromRemoteDataStore.Request()
         interactor?.fetchFromRemoteDataStore(with: request)
     }
 
@@ -116,7 +117,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     }
 
     func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
-        let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request(event: event)
+        let request = Models.TrackAnalytics.Request(event: event)
         interactor?.trackAnalytics(with: request)
     }
 
@@ -127,7 +128,7 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
     // MARK: - Use Case - ___VARIABLE_sceneName___
 
     func perform___VARIABLE_sceneName___(_ sender: Any) {
-        let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLocalLabel.text)
+        let request = Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: exampleLocalLabel.text)
         interactor?.perform___VARIABLE_sceneName___(with: request)
     }
 
