@@ -19,38 +19,29 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
 
     // MARK: - Properties
 
+    typealias Models = ___VARIABLE_sceneName___Models
     weak var viewController: ___VARIABLE_sceneName___DisplayLogic?
 
     // MARK: - Use Case - Fetch From Local DataStore
 
     func presentFetchFromLocalDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response) {
-        let translation = "Some localised text."
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
+        let translation = "Some localized text."
+        let viewModel = Models.FetchFromLocalDataStore.ViewModel(exampleTranslation: translation)
         viewController?.displayFetchFromLocalDataStore(with: viewModel)
     }
 
     // MARK: - Use Case - Fetch From Remote DataStore
 
     func presentFetchFromRemoteDataStore(with response: ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response) {
-        let code = response.exampleVariable
-        var exampleText: String
-
-        switch code {
-        case "0000":
-            exampleText = "Success!"
-
-        default:
-            exampleText = "Oops."
-        }
-
-        let viewModel = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: exampleText)
+        let formattedExampleVariable = response.exampleVariable ?? ""
+        let viewModel = Models.FetchFromRemoteDataStore.ViewModel(exampleVariable: formattedExampleVariable)
         viewController?.displayFetchFromRemoteDataStore(with: viewModel)
     }
 
     // MARK: - Use Case - Track Analytics
 
     func presentTrackAnalytics(with response: ___VARIABLE_sceneName___Models.TrackAnalytics.Response) {
-        let viewModel = ___VARIABLE_sceneName___Models.TrackAnalytics.ViewModel()
+        let viewModel = Models.TrackAnalytics.ViewModel()
         viewController?.displayTrackAnalytics(with: viewModel)
     }
 
@@ -62,14 +53,14 @@ class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLog
         if let error = responseError {
             switch error.type {
             case .emptyExampleVariable:
-                responseError?.message = "Localised empty/nil error message."
+                responseError?.message = "Localized empty/nil error message."
 
-            case .apiError:
-                responseError?.message = "Localised api error message."
+            case .networkError:
+                responseError?.message = "Localized network error message."
             }
         }
 
-        let viewModel = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.ViewModel(error: responseError)
+        let viewModel = Models.Perform___VARIABLE_sceneName___.ViewModel(error: responseError)
         viewController?.displayPerform___VARIABLE_sceneName___(with: viewModel)
     }
 }

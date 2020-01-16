@@ -112,7 +112,8 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
 
     // MARK: - Use Case - Track Analytics
 
-    @objc func trackScreenViewAnalytics() {
+    @objc
+    func trackScreenViewAnalytics() {
         trackAnalytics(event: .screenView)
     }
 
@@ -140,9 +141,10 @@ class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_scen
             case .emptyExampleVariable:
                 exampleLocalLabel.text = error.message
 
-            case .apiError:
+            case .networkError:
                 exampleLocalLabel.text = error.message
             }
+
             return
         }
 
