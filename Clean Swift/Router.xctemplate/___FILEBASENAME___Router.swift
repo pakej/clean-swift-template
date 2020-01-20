@@ -20,7 +20,7 @@ class ___VARIABLE_sceneName___Router: NSObject, ___VARIABLE_sceneName___RoutingL
 
     // MARK: - Properties
 
-    var viewController: ___VARIABLE_sceneName___ViewController?
+    weak var viewController: ___VARIABLE_sceneName___ViewController?
     var dataStore: ___VARIABLE_sceneName___DataStore?
 
     // MARK: - Routing

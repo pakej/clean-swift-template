@@ -15,6 +15,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
 
         // MARK: - Subject Under Test (SUT)
 
+        typealias Models = NewGroupModels
         var sut: ___VARIABLE_sceneName___Presenter!
 
         // MARK: - Test Doubles
@@ -39,7 +40,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
         describe("present fetch from local data store") {
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
+                let response = Models.FetchFromLocalDataStore.Response()
 
                 // when
                 sut.presentFetchFromLocalDataStore(with: response)
@@ -52,7 +53,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
         describe("present fetch from remote data store") {
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+                let response = Models.FetchFromRemoteDataStore.Response()
 
                 // when
                 sut.presentFetchFromRemoteDataStore(with: response)
@@ -65,7 +66,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
         describe("present track analytics") {
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
+                let response = Models.TrackAnalytics.Response()
 
                 // when
                 sut.presentTrackAnalytics(with: response)
@@ -79,8 +80,8 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
             context("when there are error(s)", closure: {
                 it("should return error message", closure: {
                     // given
-                    let error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
-                    let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response(error: error)
+                    let error = Models.___VARIABLE_sceneName___Error(type: .emptyExampleVariable)
+                    let response = Models.Perform___VARIABLE_sceneName___.Response(error: error)
 
                     // when
                     sut.presentPerform___VARIABLE_sceneName___(with: response)
@@ -92,7 +93,7 @@ class ___VARIABLE_sceneName___PresenterSpec: QuickSpec {
 
             it("should ask view controller to display", closure: {
                 // given
-                let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response()
+                let response = Models.Perform___VARIABLE_sceneName___.Response()
 
                 // when
                 sut.presentPerform___VARIABLE_sceneName___(with: response)

@@ -15,6 +15,7 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
 
         // MARK: - Subject Under Test (SUT)
 
+        typealias Models = ___VARIABLE_sceneName___Models
         var sut: ___VARIABLE_sceneName___Worker!
 
         // MARK: - Test Doubles
@@ -31,23 +32,6 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
 
         // MARK: - Methods
 
-        describe("fetch from remote datastore") {
-            it("should return a string", closure: {
-                // given
-                var actualOutput = ""
-                let expectedOutput = "0000"
-
-                // when
-                sut.fetchFromRemoteDataStore(completion: {
-                    code in
-                    actualOutput = code
-                })
-
-                // then
-                expect(actualOutput).toEventually(equal(expectedOutput))
-            })
-        }
-
         describe("validate example variable") {
             context("example variable is nil", closure: {
                 it("should create empty example variable error", closure: {
@@ -55,11 +39,11 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                     let exampleVariable: String? = nil
 
                     // when
-                    sut.validate(exampleVariable: exampleVariable)
+                    let error = sut.validate(exampleVariable: exampleVariable)
 
                     // then
-                    expect(sut.error).notTo(beNil())
-                    expect(sut.error?.type).to(equal(___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable))
+                    expect(error).notTo(beNil())
+                    expect(error?.type).to(equal(Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable))
                 })
             })
 
@@ -69,11 +53,11 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                     let exampleVariable = ""
 
                     // when
-                    sut.validate(exampleVariable: exampleVariable)
+                    let error = sut.validate(exampleVariable: exampleVariable)
 
                     // then
-                    expect(sut.error).notTo(beNil())
-                    expect(sut.error?.type).to(equal(___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable))
+                    expect(error).notTo(beNil())
+                    expect(error?.type).to(equal(Models.___VARIABLE_sceneName___ErrorType.emptyExampleVariable))
                 })
             })
 
@@ -83,42 +67,11 @@ class ___VARIABLE_sceneName___WorkerSpec: QuickSpec {
                     let exampleVariable = "Example string."
 
                     // when
-                    sut.validate(exampleVariable: exampleVariable)
+                    let error = sut.validate(exampleVariable: exampleVariable)
 
                     // then
-                    expect(sut.error).to(beNil())
+                    expect(error).to(beNil())
                 })
-            })
-        }
-
-        describe("track analytics") {
-            context("when event is screen view", closure: {
-                it("should track analytics", closure: {
-                    // given
-                    let event: ___VARIABLE_sceneName___Models.AnalyticsEvents = .screenView
-
-                    // when
-                    sut.trackAnalytics(event: event)
-
-                    // then
-                    // assert something here based on use case
-                })
-            })
-        }
-
-        describe("perform ___VARIABLE_sceneName___") {
-            it("should always return true and without error response", closure: {
-                // given
-                var response: (isSuccessful: Bool, error: ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>?)!
-
-                // when
-                sut.perform___VARIABLE_sceneName___(completion: { (isSuccessful, error) in
-                    response = (isSuccessful, error)
-                })
-
-                // then
-                expect(response.isSuccessful).toEventually(beTrue())
-                expect(response.error).toEventually(beNil())
             })
         }
 

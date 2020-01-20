@@ -55,22 +55,26 @@ enum ___VARIABLE_sceneName___Models {
         }
 
         struct Response {
-            var error: Error<___VARIABLE_sceneName___ErrorType>?
+            var error: ___VARIABLE_sceneName___Error?
         }
 
         struct ViewModel {
-            var error: Error<___VARIABLE_sceneName___ErrorType>?
+            var error: ___VARIABLE_sceneName___Error?
         }
     }
 
-    // MARK: - View Models
+    // MARK: - Types
 
-    enum AnalyticsEvents {
+    // replace with `AnalyticsEvents` with `AnalyticsConstants` if needed
+    typealias AnalyticsEvents = ExampleAnalyticsEvents
+    typealias ___VARIABLE_sceneName___Error = Error<___VARIABLE_sceneName___ErrorType>
+
+    enum ExampleAnalyticsEvents {
         case screenView
     }
 
     enum ___VARIABLE_sceneName___ErrorType {
-        case emptyExampleVariable, apiError
+        case emptyExampleVariable, networkError
     }
 
     struct Error<T> {
