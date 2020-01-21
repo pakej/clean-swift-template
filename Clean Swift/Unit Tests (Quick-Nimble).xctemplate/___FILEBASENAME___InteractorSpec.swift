@@ -15,6 +15,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
 
         // MARK: - Subject Under Test (SUT)
 
+        typealias Models = ___VARIABLE_sceneName___Models
         var sut: ___VARIABLE_sceneName___Interactor!
 
         // MARK: - Test Doubles
@@ -42,7 +43,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
         describe("fetch from local data store") {
             it("should ask presenter to format", closure: {
                 // given
-                let request = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Request()
+                let request = Models.FetchFromLocalDataStore.Request()
 
                 // when
                 sut.fetchFromLocalDataStore(with: request)
@@ -55,36 +56,26 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
         describe("fetch from remote data store") {
             beforeEach {
                 // given
-                let request = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Request()
+                let request = Models.FetchFromRemoteDataStore.Request()
 
                 // when
                 sut.fetchFromRemoteDataStore(with: request)
             }
 
-            it("should ask worker to fetch from remote datastore", closure: {
-                // then
-                expect(workerSpy.fetchFromRemoteDataStoreCalled).toEventually(beTrue())
-            })
-
             it("should ask presenter to format", closure: {
                 // then
-                expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).toEventually(beTrue())
+                // expect(presentationLogicSpy.presentFetchFromRemoteDataStoreCalled).toEventually(beTrue())
             })
         }
 
         describe("track analytics") {
             beforeEach {
                 // given
-                let request = ___VARIABLE_sceneName___Models.TrackAnalytics.Request(event: .screenView)
+                let request = Models.TrackAnalytics.Request(event: .screenView)
 
                 // when
                 sut.trackAnalytics(with: request)
             }
-
-            it("should ask worker to track analytics", closure: {
-                // then
-                expect(workerSpy.trackAnalyticsCalled).to(beTrue())
-            })
 
             it("should ask presenter to format", closure: {
                 // then
@@ -95,7 +86,7 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
         describe("perform ___VARIABLE_sceneName___") {
             it("should validate example variable", closure: {
                 // given
-                let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request()
+                let request = Models.Perform___VARIABLE_sceneName___.Request()
 
                 // when
                 sut.perform___VARIABLE_sceneName___(with: request)
@@ -104,35 +95,9 @@ class ___VARIABLE_sceneName___InteractorSpec: QuickSpec {
                 expect(workerSpy.validateExampleVariableCalled).to(beTrue())
             })
 
-            context("when there are error(s)", closure: {
-                it("should not ask worker to perform ___VARIABLE_sceneName___", closure: {
-                    // given
-                    let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: nil)
-
-                    // when
-                    sut.perform___VARIABLE_sceneName___(with: request)
-
-                    // then
-                    expect(workerSpy.perform___VARIABLE_sceneName___Called).to(beFalse())
-                })
-            })
-
-            context("when there are no errors", closure: {
-                it("should ask worker to perform ___VARIABLE_sceneName___", closure: {
-                    // given
-                    let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request(exampleVariable: "Example string.")
-
-                    // when
-                    sut.perform___VARIABLE_sceneName___(with: request)
-
-                    // then
-                    expect(workerSpy.perform___VARIABLE_sceneName___Called).to(beTrue())
-                })
-            })
-
             it("should ask presenter to format", closure: {
                 // given
-                let request = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Request()
+                let request = Models.Perform___VARIABLE_sceneName___.Request()
 
                 // when
                 sut.perform___VARIABLE_sceneName___(with: request)
@@ -204,31 +169,10 @@ extension ___VARIABLE_sceneName___InteractorSpec {
 
         // MARK: Spied Methods
 
-        var fetchFromRemoteDataStoreCalled = false
-        override func fetchFromRemoteDataStore(completion: (_ code: String) -> Void) {
-            super.fetchFromRemoteDataStore(completion: {
-                [weak self] code in
-                self?.fetchFromRemoteDataStoreCalled = true
-                completion(code)
-            })
-        }
-
         var validateExampleVariableCalled = false
-        override func validate(exampleVariable: String?) {
-            super.validate(exampleVariable: exampleVariable)
+        override func validate(exampleVariable: String?) -> ___VARIABLE_sceneName___Worker.Models.___VARIABLE_sceneName___Error? {
             validateExampleVariableCalled = true
-        }
-
-        var trackAnalyticsCalled = false
-        override func trackAnalytics(event: ___VARIABLE_sceneName___Models.AnalyticsEvents) {
-            super.trackAnalytics(event: event)
-            trackAnalyticsCalled = true
-        }
-
-        var perform___VARIABLE_sceneName___Called = false
-        override func perform___VARIABLE_sceneName___(completion: @escaping (Bool, ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Worker.ErrorType>?) -> Void) {
-            super.perform___VARIABLE_sceneName___(completion: completion)
-            perform___VARIABLE_sceneName___Called = true
+            return super.validate(exampleVariable: exampleVariable)
         }
     }
 }

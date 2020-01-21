@@ -13,6 +13,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
     // MARK: - Subject Under Test (SUT)
 
+    typealias Models = ___VARIABLE_sceneName___Models
     var sut: ___VARIABLE_sceneName___Presenter!
 
     // MARK: - Test Lifecycle
@@ -74,7 +75,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.FetchFromLocalDataStore.Response()
+        let response = Models.FetchFromLocalDataStore.Response()
 
         // when
         sut.presentFetchFromLocalDataStore(with: response)
@@ -87,7 +88,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.FetchFromRemoteDataStore.Response()
+        let response = Models.FetchFromRemoteDataStore.Response()
 
         // when
         sut.presentFetchFromRemoteDataStore(with: response)
@@ -100,7 +101,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.TrackAnalytics.Response()
+        let response = Models.TrackAnalytics.Response()
 
         // when
         sut.presentTrackAnalytics(with: response)
@@ -113,7 +114,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
         // given
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response()
+        let response = Models.Perform___VARIABLE_sceneName___.Response()
 
         // when
         sut.presentPerform___VARIABLE_sceneName___(with: response)
@@ -124,10 +125,10 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
     func testPresentPerform___VARIABLE_sceneName___ShouldReturnErrorMessageIfThereIsAnError() {
         // given
-        let error = ___VARIABLE_sceneName___Models.Error<___VARIABLE_sceneName___Models.___VARIABLE_sceneName___ErrorType>.init(type: .emptyExampleVariable)
+        let error = Models.___VARIABLE_sceneName___Error(type: .emptyExampleVariable)
         let spy = ___VARIABLE_sceneName___DisplayLogicSpy()
         sut.viewController = spy
-        let response = ___VARIABLE_sceneName___Models.Perform___VARIABLE_sceneName___.Response(error: error)
+        let response = Models.Perform___VARIABLE_sceneName___.Response(error: error)
 
         // when
         sut.presentPerform___VARIABLE_sceneName___(with: response)
