@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file
 
+## 5.4.0
+
+- All
+  - Added `typealias Models` to shorten call to each screen's models
+- Business/Presentation/Display Protocols
+  - Leave it to call the screen's model in full, to not unnecessary call a `typealias` from within Interactor, Presenter, ViewController respectively
+- Models
+  - Modified `AnalyticsEvents` to `typealias` to hint to refer to an centralised analytics constants enum
+  - Declared `typealias Error = Error<ErrorType>` to simplify referencing to errors
+  - Changed the comment header from `View Models` to `Types` to make more sense
+  - Change `apiError` to `networkError` case to broaden the error scope
+- Interactor
+  - Simplified `fetchFromRemoteDataStore`, `trackAnalytics` and `perform___VARIABLE_sceneName___` use cases to be able to call shared workers directly, instead of having to wrap it through the screen's worker
+  - Changed referencing screen worker as `lazy` as there's no specific reason to make it optional
+- Router
+  - Declared view controller as `weak` to prevent memory leaks
+- Unit Tests
+  - Updated both XCTest and Quick-Nimble templates to reflect the above changes
+
 ## 5.3.0
 
 - Added screen view and primary button to analytics events
